@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UE 24 — Méthodologie de la pratique psychologique</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf8f5;
+  --bg2: #ffffff;
+  --bg3: #f3f0eb;
+  --border: rgba(0,0,0,0.07);
+  --border2: rgba(0,0,0,0.12);
+  --text: #2d2a26;
+  --text2: #5a5650;
+  --text3: #9a958e;
+
+  --lav: #ede9f8; --lav-d: #7c6fd4; --lav-t: #f6f4fd;
+  --mint: #e4f4ee; --mint-d: #2e9e72; --mint-t: #f0faf6;
+  --peach: #fdeee8; --peach-d: #d4663a; --peach-t: #fef7f4;
+  --butter: #fdf5e0; --butter-d: #c48a0a; --butter-t: #fffdf5;
+  --sky: #e3effe; --sky-d: #2c6fd4; --sky-t: #f2f7ff;
+  --rose: #fce8ee; --rose-d: #c44870; --rose-t: #fef4f7;
+  --sage: #eaf2ea; --sage-d: #3d8b4e; --sage-t: #f4f9f4;
+
+  --radius: 12px;
+  --radius-lg: 18px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.65; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,248,245,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border2);
+  padding: 0 1.5rem;
+  display: flex; align-items: center; gap: 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+nav::-webkit-scrollbar { display: none; }
+.nav-brand {
+  font-weight: 600; font-size: 13px; color: var(--lav-d);
+  white-space: nowrap; padding: 1rem 1.25rem 1rem 0;
+  border-right: 1px solid var(--border2); margin-right: 0.25rem;
+  letter-spacing: 0.01em;
+}
+.nav-tab {
+  padding: 0.9rem 0.9rem; font-size: 13px; color: var(--text2);
+  cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s; font-weight: 500;
+  background: none; border-top: none; border-left: none; border-right: none;
+  font-family: 'DM Sans', sans-serif;
+}
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active { color: var(--lav-d); border-bottom-color: var(--lav-d); }
+
+/* LAYOUT */
+.section { display: none; max-width: 920px; margin: 0 auto; padding: 2.5rem 1.75rem 4rem; }
+.section.active { display: block; }
+
+/* HERO */
+.hero {
+  background: var(--lav);
+  border: 1px solid rgba(124,111,212,0.15);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2.5rem;
+  margin-bottom: 2rem;
+  position: relative; overflow: hidden;
+}
+.hero-tag {
+  display: inline-block; background: white; color: var(--lav-d);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 0.85rem; border: 1px solid rgba(124,111,212,0.2);
+}
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: 27px; color: var(--text); line-height: 1.3; margin-bottom: 0.6rem; }
+.hero p { color: var(--text2); font-size: 14px; max-width: 580px; }
+
+/* SECTION TITLES */
+.stitle { font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; font-family: 'DM Serif Display', serif; }
+.ssub { color: var(--text2); font-size: 14px; margin-bottom: 1.75rem; }
+h2.sh2 { font-size: 17px; font-weight: 600; color: var(--text); margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border2); }
+
+/* CARDS GRID */
+.cgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 0.85rem; margin-bottom: 2rem; }
+.card {
+  background: white; border: 1px solid var(--border2);
+  border-radius: var(--radius-lg); padding: 1.25rem;
+  transition: box-shadow 0.15s, transform 0.15s; cursor: pointer;
+}
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); transform: translateY(-2px); }
+.card-ico { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 0.75rem; }
+.card h3 { font-size: 13.5px; font-weight: 600; margin-bottom: 0.35rem; }
+.card p { font-size: 12.5px; color: var(--text2); line-height: 1.5; }
+
+/* CONTENT BLOCKS */
+.block {
+  background: white; border: 1px solid var(--border2);
+  border-radius: var(--radius-lg); padding: 1.4rem 1.5rem; margin-bottom: 1.1rem;
+}
+.block-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 0.9rem; }
+.block-ico { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+.block-title { font-size: 14.5px; font-weight: 600; color: var(--text); }
+.block p, .block li { font-size: 13.5px; color: var(--text2); line-height: 1.65; }
+.block ul, .block ol { padding-left: 1.2rem; margin-top: 0.45rem; }
+.block li { margin-bottom: 0.3rem; }
+.block li strong, .block strong { color: var(--text); font-weight: 600; }
+.block em { color: var(--lav-d); font-style: normal; font-weight: 500; }
+
+/* 2COL */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media(max-width:600px){ .two-col { grid-template-columns:1fr; } .section{padding:1.5rem 1rem 3rem;} }
+
+/* QUOTE */
+.quote {
+  border-left: 3px solid var(--lav-d); padding: 0.85rem 1.1rem;
+  margin: 1rem 0; background: var(--lav-t); border-radius: 0 10px 10px 0;
+}
+.quote p { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--text) !important; font-size: 14.5px !important; }
+.quote cite { font-size: 12px; color: var(--text3); display: block; margin-top: 0.3rem; font-style: normal; font-family: 'DM Sans', sans-serif; }
+
+/* PILLS */
+.pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; margin: 2px 3px 2px 0; }
+.p-lav { background: var(--lav); color: var(--lav-d); }
+.p-mint { background: var(--mint); color: var(--mint-d); }
+.p-peach { background: var(--peach); color: var(--peach-d); }
+.p-butter { background: var(--butter); color: var(--butter-d); }
+.p-sky { background: var(--sky); color: var(--sky-d); }
+.p-rose { background: var(--rose); color: var(--rose-d); }
+.p-sage { background: var(--sage); color: var(--sage-d); }
+
+/* NOTE BOX */
+.note { background: var(--butter); border: 1px solid rgba(196,138,10,0.2); border-radius: var(--radius); padding: 0.9rem 1.1rem; margin: 0.85rem 0; }
+.note p { font-size: 13px; color: var(--butter-d); }
+.note strong { color: var(--butter-d); }
+.warn { background: var(--peach); border: 1px solid rgba(212,102,58,0.2); border-radius: var(--radius); padding: 0.9rem 1.1rem; margin: 0.85rem 0; }
+.warn p { font-size: 13px; color: var(--peach-d); }
+.ok { background: var(--mint); border: 1px solid rgba(46,158,114,0.2); border-radius: var(--radius); padding: 0.9rem 1.1rem; margin: 0.85rem 0; }
+.ok p { font-size: 13px; color: var(--mint-d); }
+
+/* TABLE */
+.tbl { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 0.75rem; }
+.tbl th { text-align: left; padding: 9px 12px; background: var(--bg3); color: var(--text2); font-weight: 600; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid var(--border2); }
+.tbl td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; }
+.tbl tr:last-child td { border-bottom: none; }
+.tbl tr:hover td { background: var(--bg3); }
+.tbl-name { font-weight: 600; color: var(--text); }
+.plus { color: var(--mint-d); }
+.minus { color: var(--peach-d); }
+
+/* BLANCHET GRID */
+.bg { display: grid; grid-template-columns: 40px 1fr 1fr 1fr 80px; gap: 1px; background: var(--border2); border-radius: var(--radius); overflow: hidden; font-size: 12.5px; margin-top: 1rem; }
+.bgc { background: white; padding: 9px 11px; color: var(--text2); }
+.bgc.hd { background: var(--bg3); font-weight: 600; color: var(--text); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+.bgc.rn { background: var(--lav); font-weight: 700; color: var(--lav-d); text-align: center; font-size: 15px; display: flex; align-items: center; justify-content: center; }
+.bgc.lbl { writing-mode: vertical-rl; text-orientation: mixed; text-align: center; padding: 10px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.lbl-ref { background: var(--lav); color: var(--lav-d); }
+.lbl-exp { background: var(--mint); color: var(--mint-d); }
+.lbl-the { background: var(--butter); color: var(--butter-d); }
+
+/* ANNALES */
+.acase { background: white; border: 1px solid var(--border2); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 1.5rem; }
+.acase-hd { background: var(--bg3); padding: 1rem 1.25rem; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border2); flex-wrap: wrap; }
+.abadge { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
+.acase-title { font-size: 14.5px; font-weight: 600; color: var(--text); }
+.ayear { font-size: 12px; color: var(--text3); margin-left: auto; }
+.acase-body { padding: 1.25rem; }
+.acase-body p { font-size: 13.5px; color: var(--text2); line-height: 1.7; margin-bottom: 0.65rem; }
+.qs { margin-top: 1rem; }
+.qi { display: flex; gap: 10px; padding: 0.55rem 0; border-top: 1px solid var(--border); font-size: 13px; }
+.qn { background: var(--lav); color: var(--lav-d); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.qtext { color: var(--text2); line-height: 1.55; }
+.corr { display: none; background: var(--lav-t); border-top: 1px solid rgba(124,111,212,0.15); padding: 1.25rem; }
+.corr.vis { display: block; }
+.corr h4 { font-size: 12px; font-weight: 600; color: var(--lav-d); margin-bottom: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.corr p, .corr li { font-size: 13px; color: var(--text2); line-height: 1.65; }
+.corr ul, .corr ol { padding-left: 1.2rem; margin-top: 0.35rem; }
+.corr li { margin-bottom: 0.3rem; }
+.corr li strong { color: var(--text); }
+.tbtn {
+  display: block; margin: 0.75rem 1.25rem 1rem;
+  padding: 8px 16px; background: var(--mint);
+  color: var(--mint-d); border: 1px solid rgba(46,158,114,0.25);
+  border-radius: 8px; font-size: 12.5px; font-weight: 600;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  width: calc(100% - 2.5rem); text-align: left; transition: background 0.15s;
+}
+.tbtn:hover { background: rgba(46,158,114,0.2); }
+
+/* STEP */
+.step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 0.85rem; }
+.step-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.step p { font-size: 13.5px; color: var(--text2); line-height: 1.6; }
+.step strong { color: var(--text); }
+
+/* CHECKLIST */
+.cklist { list-style: none; padding: 0; }
+.cklist li { padding: 5px 0 5px 1.4rem; position: relative; font-size: 13.5px; color: var(--text2); border-bottom: 1px solid var(--border); }
+.cklist li:last-child { border-bottom: none; }
+.cklist li::before { content: '›'; position: absolute; left: 0; color: var(--lav-d); font-weight: 700; font-size: 16px; line-height: 1.3; }
+
+/* COLORED BOX */
+.cbox { border-radius: var(--radius); padding: 0.85rem 1rem; margin: 0.5rem 0; }
+.cbox p { font-size: 13px; line-height: 1.6; }
+</style>
+
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">UE 24 Psych. Clinique</div>
+  <button class="nav-tab active" onclick="showTab('accueil')">🏠 Accueil</button>
+  <button class="nav-tab" onclick="showTab('cours')">📖 Cours CM</button>
+  <button class="nav-tab" onclick="showTab('entretiens')">🗂️ Types d'entretiens</button>
+  <button class="nav-tab" onclick="showTab('motifs')">🩺 Motifs & Populations</button>
+  <button class="nav-tab" onclick="showTab('techniques')">🎧 Techniques d'écoute</button>
+  <button class="nav-tab" onclick="showTab('porter')">⚖️ Porter</button>
+  <button class="nav-tab" onclick="showTab('blanchet')">🔬 Blanchet</button>
+  <button class="nav-tab" onclick="showTab('anamn')">📋 Anamnèse</button>
+  <button class="nav-tab" onclick="showTab('transfert')">🔄 T/CT</button>
+  <button class="nav-tab" onclick="showTab('annales')">📝 Annales</button>
+  <button class="nav-tab" onclick="showTab('methodo')">✏️ Méthodo exam</button>
+</nav>
+
+<!-- ===== ACCUEIL ===== -->
+<div id="accueil" class="section active">
+  <div class="hero">
+    <div class="hero-tag">Licence 3 — Semestre 1 — Université de Caen</div>
+    <h1>UE 24 — Méthodologie de la pratique psychologique</h1>
+    <p>Guide de révision complet basé sur vos cours CM (Astrid Hirschelmann) et TDs. Contient tout le contenu, les grilles Porter & Blanchet, l'anamnèse, les annales commentées.</p>
+  </div>
+
+  <div class="stitle">Ce que le partiel teste</div>
+  <div class="ssub">Étude de cas clinique (vignette). 3h. Documents non autorisés. Choisir entre sujet clinique ou neuropsychologie.</div>
+
+  <div class="cgrid">
+    <div class="card" onclick="showTab('porter')" style="border-top: 3px solid var(--lav-d);">
+      <div class="card-ico" style="background:var(--lav);">⚖️</div>
+      <h3>Grille de Porter</h3>
+      <p>6 attitudes, avantages, risques, exemples. Toujours au partiel.</p>
+    </div>
+    <div class="card" onclick="showTab('blanchet')" style="border-top: 3px solid var(--mint-d);">
+      <div class="card-ico" style="background:var(--mint);">🔬</div>
+      <h3>Grille de Blanchet</h3>
+      <p>Niveaux DIR × TER. Justifier chaque intervention.</p>
+    </div>
+    <div class="card" onclick="showTab('anamn')" style="border-top: 3px solid var(--butter-d);">
+      <div class="card-ico" style="background:var(--butter);">📋</div>
+      <h3>Anamnèse & 1er entretien</h3>
+      <p>Par âge : enfant, adolescent, adulte.</p>
+    </div>
+    <div class="card" onclick="showTab('transfert')" style="border-top: 3px solid var(--sage-d);">
+      <div class="card-ico" style="background:var(--sage);">🔄</div>
+      <h3>Transfert / CT</h3>
+      <p>Définitions, repérage clinique, neutralité bienveillante.</p>
+    </div>
+    <div class="card" onclick="showTab('techniques')" style="border-top: 3px solid var(--sky-d);">
+      <div class="card-ico" style="background:var(--sky);">🎧</div>
+      <h3>Techniques d'écoute</h3>
+      <p>Reflets, reformulations, silences, résumés.</p>
+    </div>
+    <div class="card" onclick="showTab('annales')" style="border-top: 3px solid var(--rose-d);">
+      <div class="card-ico" style="background:var(--rose);">📝</div>
+      <h3>Annales corrigées</h3>
+      <p>Sujets 2021-2024 avec éléments de correction.</p>
+    </div>
+  </div>
+
+  <h2 class="sh2">Définition fondamentale</h2>
+  <div class="quote">
+    <p>« L'entretien est une situation d'échange conversationnel dans laquelle un interlocuteur A (enquêteur ou clinicien) extrait une information d'un interlocuteur B (enquêté ou patient), information initialement inscrite dans la biographie de B. »</p>
+    <cite>— Blanchet, 1990, p. 171</cite>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--lav);">✨</div><span class="block-title">Les 5 piliers à toujours mentionner</span></div>
+    <div class="two-col">
+      <ul>
+        <li><strong>Co-construction :</strong> clinicien ET patient sont actifs ensemble</li>
+        <li><strong>Verbal + non-verbal :</strong> mimiques, posture, silences, paralinguistique</li>
+        <li><strong>Cadre obligatoire :</strong> pas de clinique sans cadre</li>
+      </ul>
+      <ul>
+        <li><strong>Le psy est son propre outil :</strong> écoute avec sa subjectivité</li>
+        <li><strong>Comment > pourquoi :</strong> on s'intéresse au ressenti, pas aux détails factuels</li>
+        <li><strong>La demande manifeste ≠ vraie demande</strong></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COURS CM ===== -->
+<div id="cours" class="section">
+  <div class="stitle">Cours magistral — Théorie de l'entretien</div>
+  <div class="ssub">Astrid Hirschelmann — UE 24</div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--lav);">📌</div><span class="block-title">Points clés du CM</span></div>
+    <ul>
+      <li>Il n'y a pas d'outils miracles. La technique s'adapte et s'invente en fonction des situations.</li>
+      <li>Le psy n'est pas un technicien de la relation — <strong>il faut s'inventer.</strong></li>
+      <li>L'entretien doit <strong>générer une élaboration</strong> (sinon un ami ferait le travail gratuitement).</li>
+      <li>Toujours mieux servi avec la question du <strong><em>comment</em> que du <em>pourquoi</em></strong> → on s'intéresse au ressenti.</li>
+      <li>On ne reformule pas que l'explicite mais aussi <strong>l'implicite</strong> pour recevoir les émotions et la souffrance.</li>
+      <li>La personne doit se reconnaître dans le rapport (ex : cadre judiciaire).</li>
+      <li>On ne cherche pas la vérité (comme en justice) mais la <strong>vérité subjective</strong> du patient.</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--butter);">🏗️</div><span class="block-title">Le cadre — 3 dimensions</span></div>
+    <div class="two-col">
+      <div>
+        <p><strong>1. Dimensions sociales et institutionnelles</strong></p>
+        <ul>
+          <li>Secret professionnel (et ses limites : danger)</li>
+          <li>Pas de contact physique</li>
+          <li>Pas de numéro personnel</li>
+          <li>Code de déontologie</li>
+        </ul>
+        <p style="margin-top:0.75rem;"><strong>2. Dimensions concrètes (espace & temps)</strong></p>
+        <ul>
+          <li>Régularité, ritualisation</li>
+          <li>Disposition des meubles (divan = rapport de force)</li>
+          <li>Fréquence et durée des séances</li>
+          <li>Tarif discuté en présentiel (pas au téléphone)</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>3. Construction psychique (cadre interne)</strong></p>
+        <ul>
+          <li>Contenance + limites</li>
+          <li>Le psy transporte son cadre partout</li>
+          <li>Cadre malléable mais présent même à l'hôpital, en prison…</li>
+        </ul>
+        <p style="margin-top:0.75rem;"><strong>Contrat psy-patient inclut :</strong></p>
+        <ul>
+          <li>Tarif, fréquence, durée, horaires</li>
+          <li>Objectifs clairement définis</li>
+          <li>Règles différentes selon chaque psy et chaque patient</li>
+        </ul>
+        <div class="warn" style="margin-top:0.75rem;"><p>⚠️ La majorité des problèmes dans un suivi viennent d'un cadre insuffisamment posé.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--mint);">🔄</div><span class="block-title">L'entretien comme relation intersubjective</span></div>
+    <p>C'est la rencontre entre :</p>
+    <ul style="margin-top:0.5rem;">
+      <li><strong>Un sujet à l'écoute</strong> capable de mettre en suspens son « égo » et ses théories (le patient ne doit rien savoir du psychologue, pas de leçon à donner)</li>
+      <li><strong>Un sujet en attente</strong> d'une réponse à un problème, un symptôme, une souffrance</li>
+    </ul>
+    <p style="margin-top:0.75rem;">→ La personne n'attend pas une réponse toute prête — <strong>il faut trouver la solution avec elle.</strong></p>
+    <p style="margin-top:0.5rem;">→ <strong>Attente qu'il faut transformer en demande.</strong></p>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--sky);">🧠</div><span class="block-title">Approche Centrée sur la Personne — Rogers</span></div>
+    <p style="margin-bottom:0.5rem;">Psychologie existentielle/humaniste. Hypothèse : tendance naturelle de tout être humain à se réaliser.</p>
+    <p><em>« Ce qu'il y a de plus profond au cœur de l'homme est digne de confiance. »</em></p>
+    <div class="two-col" style="margin-top:0.75rem;">
+      <div>
+        <p><strong>3 attitudes facilitatrices :</strong></p>
+        <ul>
+          <li><strong>Empathie :</strong> se centrer sur la manière dont l'autre perçoit la réalité en faisant abstraction de notre propre univers de références</li>
+          <li><strong>Absence de jugement</strong> (y compris positif ! Un jugement positif implique qu'on peut aussi juger négativement → crée de la dépendance)</li>
+          <li><strong>Acceptation positive inconditionnelle :</strong> accepter l'autre tel qu'il est</li>
+          <li><strong>Authenticité / Congruence :</strong> être en accord avec soi-même, avoir conscience de ses sentiments et projections</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Effets sur la relation :</strong></p>
+        <ul>
+          <li>Augmentation de l'estime de soi du patient</li>
+          <li>Mise en place d'une relation de confiance</li>
+          <li>Amélioration de la qualité de la communication</li>
+        </ul>
+        <p style="margin-top:0.75rem;"><strong>À retenir :</strong></p>
+        <ul>
+          <li>« Counseling » plutôt que « thérapie » selon Rogers</li>
+          <li>« Experiencing » = expérience interne en cours dans l'entretien</li>
+          <li>Le psychisme est d'une souplesse incroyable, on s'adapte</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--peach);">📐</div><span class="block-title">Démarche clinique d'investigation</span></div>
+    <div class="two-col">
+      <div>
+        <ul>
+          <li><strong>Objectif :</strong> appréhender, comprendre et éventuellement modifier le fonctionnement psychique d'un sujet</li>
+          <li><strong>Méthode :</strong> subjective et subjectivante — utiliser le rapport intersubjectif</li>
+          <li><strong>Investigation ≠ Diagnostic</strong></li>
+          <li><strong>Bilan à mains nues</strong> (entretien seul) vs <strong>à mains armées</strong> (avec tests, projectifs…)</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Préalables :</strong></p>
+        <ul>
+          <li>Élaboration des données</li>
+          <li>Question des théories</li>
+          <li>Validité des résultats</li>
+          <li>Formation du clinicien</li>
+          <li>⚠️ Ne jamais commencer par un test sans l'expliquer</li>
+          <li>Après 2-3 séances → on n'est plus dans l'enquête mais dans le thérapeutique</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--sage);">💬</div><span class="block-title">La relation thérapeutique : confiance, respect, empathie</span></div>
+    <div class="two-col">
+      <div>
+        <p><strong>Confiance — en :</strong></p>
+        <ul>
+          <li>Expliquant ce qu'on va faire</li>
+          <li>Mettant le patient à l'aise (moment privilégié)</li>
+          <li>Rappelant le secret professionnel</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Grands principes :</strong></p>
+        <ul>
+          <li>Pas la réalité des choses mais <strong>la réalité du patient</strong> (comment il l'a vécu)</li>
+          <li>Respecter les oublis, omissions, silences — ils ont une fonction</li>
+          <li>On n'est pas là pour corriger ou donner des conseils</li>
+          <li>Ne pas avoir peur d'interrompre pour recadrer (éviter le « discours appris »)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TYPES D'ENTRETIENS ===== -->
+<div id="entretiens" class="section">
+  <div class="stitle">Types d'entretiens</div>
+  <div class="ssub">Selon la directivité, la demande et l'objectif.</div>
+
+  <h2 class="sh2">Selon la thématisation du discours</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--butter);">🎯</div><span class="block-title">Entretien directif</span><span class="pill p-peach" style="margin-left:auto;">Interrogatoire ⚠️</span></div>
+    <ul>
+      <li>Questions directes, fréquentes, ciblées, plus ou moins fermées, <strong>établies à l'avance</strong></li>
+      <li>Protocole strict — l'interviewé suit la ligne de pensée de l'interviewer</li>
+      <li>Le discours de l'interviewé est <strong>délinéarisé</strong></li>
+      <li>Réponses courtes, peu d'élaboration</li>
+      <li>Utilisé surtout en recherche (comparaison des sujets), expertise judiciaire</li>
+      <li>⚠️ Met complètement de côté la libre association, l'élaboration du sujet</li>
+      <li>⚠️ Tendance au début de carrière car ça rassure, mais à éviter en clinique</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--mint);">✅</div><span class="block-title">Entretien semi-directif</span><span class="pill p-mint" style="margin-left:auto;">Le plus courant</span></div>
+    <ul>
+      <li>Thèmes identifiés dans un <strong>guide d'entretien</strong> préparé à l'avance</li>
+      <li>Respecte la <strong>spontanéité</strong> du sujet (façon dont il parle, thèmes qu'il aborde)</li>
+      <li>Le clinicien s'autorise à développer des sujets abordés par le patient lui-même</li>
+      <li>Respecte les oublis, omissions — ce qui ne peut pas être dit a une signification</li>
+      <li>Demande au psy d'être vif, concentré, d'accepter de ne pas tout contrôler</li>
+      <li>✅ Très pertinent aussi pour la recherche (ex : mémoire de recherche)</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--lav);">🌊</div><span class="block-title">Entretien non directif</span><span class="pill p-lav" style="margin-left:auto;">Approche analytique</span></div>
+    <div class="two-col">
+      <div>
+        <p><strong>Pour le patient — libre association (Freud) :</strong></p>
+        <ul>
+          <li>Pas de thèmes définis à l'avance</li>
+          <li>Dire tout ce qui passe par la tête sans censure morale</li>
+          <li>Freud : « Einfall » = ce qui nous tombe dans la tête de façon inattendue</li>
+          <li>Encourage le surgissement de représentations inconscientes</li>
+          <li>La résistance et la censure vont s'actualiser — c'est à nous de les repérer</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Pour le clinicien — attention flottante (Freud) :</strong></p>
+        <ul>
+          <li>Contrepartie de la libre association</li>
+          <li>Essayer d'être en page blanche, suspendre ce qui attire habituellement l'attention</li>
+          <li>Ne fait pas de choix dans ce que dit le patient</li>
+          <li>Écoute tout : ton de la voix, mimiques, ce qui est dit et ce qui est évité</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sh2">Selon l'objectif clinique</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--sky);">📊</div><span class="block-title">Entretien d'évaluation / investigation / bilan</span></div>
+    <ul>
+      <li><strong>Temporalité courte :</strong> quelques séances sur quelques semaines</li>
+      <li><strong>Objectif :</strong> répondre à une demande de bilan, évaluer à un moment T</li>
+      <li>Vérification du fonctionnement psychologique (photo à l'instant T)</li>
+      <li>Pas d'interprétations, pas d'hypothèses exprimées au patient pendant</li>
+      <li>Rester neutre et faire preuve de contenance</li>
+      <li>Entretien d'évaluation ≠ suivi psychothérapeutique (ne pas confondre les deux)</li>
+      <li>⚠️ Si on suit déjà le patient en psychothérapie, ce n'est pas nous qui faisons le bilan</li>
+      <li>Exemples : annonce de maladie, premier entretien d'accueil, bilan neuropsycho</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--lav);">💬</div><span class="block-title">Entretien psychothérapeutique / de suivi</span></div>
+    <ul>
+      <li><strong>Temporalité longue :</strong> plusieurs mois, plusieurs années</li>
+      <li><strong>Objectif :</strong> accompagner la personne dans la compréhension de son fonctionnement psychique</li>
+      <li>Permettre de mieux vivre avec sa problématique</li>
+      <li>Le clinicien peut prêter son appareil à penser (interprétations, hypothèses) quand nécessaire</li>
+      <li>Laisse toujours la possibilité au patient de se réapproprier les hypothèses</li>
+      <li>Psychanalyse : libre association + attention flottante</li>
+      <li>Suivi psychologique : peut être plus semi-directif</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--peach);">⚖️</div><span class="block-title">Autres types d'entretiens</span></div>
+    <div class="two-col">
+      <ul>
+        <li><strong>Entretien d'expertise :</strong> protection de l'enfance, judiciaire (CA, procureur)</li>
+        <li><strong>Entretien de soutien :</strong> ponctuel, ex oncologie, post-traumatique</li>
+        <li><strong>Entretien de recherche :</strong> standardisé, directif, à la demande du professionnel</li>
+      </ul>
+      <ul>
+        <li><strong>Entretiens de groupe :</strong> thérapie systémique, famille, cellules d'urgence (CUMP)</li>
+        <li><strong>Debriefing :</strong> quelques jours après un événement pour l'inscrire dans le psychisme</li>
+        <li><strong>Bilan neuro-développemental :</strong> WAIS, WISC, projectifs…</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sh2">Le guide d'entretien</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--sage);">📄</div><span class="block-title">Contenu du guide</span></div>
+    <ul>
+      <li>Document qui liste les thèmes ou questions à aborder</li>
+      <li>Prévoit des <strong>questions de substitution, complémentaires ou de clarification</strong></li>
+      <li>Pour entretien directif : liste les thèmes</li>
+      <li>Pour semi-directif : plusieurs questions possibles par thème</li>
+      <li>Pour directif : questionnaire</li>
+    </ul>
+    <div class="note"><p>💡 <strong>Bilan à mains nues</strong> = entretien seul. <strong>Bilan à mains armées</strong> = avec outils complémentaires (tests, projectifs). On n'explique toujours l'outil avant de l'utiliser — ce n'est pas une vérité absolue.</p></div>
+  </div>
+</div>
+
+<!-- ===== MOTIFS & POPULATIONS ===== -->
+<div id="motifs" class="section">
+  <div class="stitle">Motifs de consultation & spécificités par population</div>
+  <div class="ssub">Ce que les patients amènent, et comment adapter l'entretien selon l'âge. Contenu des TDs 2 & 3.</div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--lav);">🏛️</div><span class="block-title">Missions du psychologue</span></div>
+    <div class="two-col">
+      <div>
+        <p><strong>Cliniques :</strong></p>
+        <ul>
+          <li>1er rendez-vous d'accueil</li>
+          <li>Bilan, bilans neuro-développementaux</li>
+          <li>Groupes thérapeutiques</li>
+          <li>Écrits : RIP, signalements → pénal/procureur</li>
+          <li>Suivi (individuel, familial, conjugal, fraternel)</li>
+          <li>Évaluation du fonctionnement psychique</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Institutionnelles :</strong></p>
+        <ul>
+          <li>Réunions d'équipe (directes ou avec partenaires)</li>
+        </ul>
+        <p style="margin-top:0.75rem;"><strong>Formation / Information / Recherche :</strong></p>
+        <ul>
+          <li>20-30% du temps de travail</li>
+          <li>Formations, supervisions, thérapies perso, inter-formations</li>
+        </ul>
+        <p style="margin-top:0.75rem;"><strong>Réorientation = une des missions !</strong></p>
+        <ul><li>Ne pas présenter ça comme un abandon. Donner les coordonnées, le CMP compétent.</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sh2">🧒 Chez l'enfant</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--sage);">🧒</div><span class="block-title">Spécificités de l'entretien avec l'enfant</span></div>
+    <div class="two-col">
+      <div>
+        <p><strong>Principe fondamental (Winnicott) :</strong></p>
+        <p style="margin-top:0.3rem; font-size:13.5px; color:var(--text2);">On ne peut pas prendre l'enfant en considération seul. Les symptômes de l'enfant sont souvent l'expression d'un dysfonctionnement familial (approche systémique).</p>
+        <p style="margin-top:0.6rem;"><strong>Triple subjectivité :</strong></p>
+        <p style="margin-top:0.3rem; font-size:13.5px; color:var(--text2);">Enfant + parent + psychologue = 3 subjectivités à gérer. Quand l'adulte parle : demander à l'enfant s'il est d'accord.</p>
+        <p style="margin-top:0.6rem;"><strong>Médiation obligatoire :</strong></p>
+        <p style="margin-top:0.3rem; font-size:13.5px; color:var(--text2);">Pas même concentration qu'un adulte. Parler 40 min impossible. Médiation sert aussi à créer la confiance. Dessin, jeux, jouets — mais ne pas interpréter un dessin sans la parole de l'enfant.</p>
+      </div>
+      <div>
+        <p><strong>Motifs fréquents chez l'enfant :</strong></p>
+        <ul>
+          <li>Difficultés alimentaires</li>
+          <li>Troubles anxieux</li>
+          <li>Troubles des apprentissages</li>
+          <li>Troubles du comportement (surtout vers les pairs)</li>
+          <li>Anxiété scolaire</li>
+          <li>Dépression</li>
+          <li>Suivi maladie chronique / handicap</li>
+          <li>Séparation des parents</li>
+          <li>Protection de l'enfant</li>
+          <li>Traumatisme</li>
+          <li>Troubles du développement</li>
+          <li>Harcèlement scolaire</li>
+          <li>Retard ou avance scolaire</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warn" style="margin-top:0.75rem;"><p>⚠️ Se détacher de la demande des parents — ils vont essayer de faire adhérer à leur discours. 1er entretien toujours avec les parents. Points réguliers avec eux par la suite.</p></div>
+  </div>
+
+  <h2 class="sh2">🧑 Chez l'adolescent</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--peach);">🧑</div><span class="block-title">Spécificités de l'entretien avec l'adolescent</span></div>
+    <div class="two-col">
+      <div>
+        <p><strong>Clés de l'entretien ado :</strong></p>
+        <ul>
+          <li>L'ado est rarement demandeur — c'est souvent un tiers qui l'amène</li>
+          <li>Il désinvestit la famille pour investir les pairs → les parents s'inquiètent</li>
+          <li>Demander à l'ado s'il veut être seul ou avec ses parents</li>
+          <li><strong>AUTHENTICITÉ cruciale :</strong> il teste le cadre pour voir si on peut lui faire confiance</li>
+          <li>Adapter le langage <em>sans caricaturer</em> le « langage jeun's »</li>
+          <li>Bonne distance physique ET psychologique</li>
+          <li>Parler de ses centres d'intérêts pour créer le contact</li>
+          <li>Médiation sur sujet qu'il affectionne (film, musique, jeu)</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Motifs fréquents chez l'adolescent :</strong></p>
+        <ul>
+          <li>Crise d'adolescence (12-18 ans, rupture d'équilibre intérieur)</li>
+          <li>Problème de confiance en soi</li>
+          <li>Découverte du corps, puberté (réactualisation des conflits psychiques)</li>
+          <li>Anorexie, troubles alimentaires (en croissance)</li>
+          <li>Addictions — comportements ordaliques (binge drinking, fugue, conduite sans permis)</li>
+          <li>Anxiété, dépression</li>
+          <li>Harcèlement scolaire + réseaux sociaux</li>
+          <li>Identité, genre</li>
+          <li>TS médicamenteuses (en croissance)</li>
+          <li>États-limites (profil le + fréquent actuellement)</li>
+        </ul>
+        <div class="note" style="margin-top:0.5rem;"><p>💡 <strong>Crise d'ado :</strong> le langage est devenu insuffisant pour tout ce que le jeune ressent. Tester le cadre = « si je fais ça, tu m'aimeras encore ? »</p></div>
+      </div>
+    </div>
+    <p style="margin-top:0.75rem; font-size:13px; color:var(--text2);"><strong>Comment > Pourquoi avec l'ado :</strong> « pourquoi » induit une rationalisation (mécanisme de défense). « Comment » ouvre la porte à plus d'élaboration.</p>
+  </div>
+
+  <h2 class="sh2">👤 Chez l'adulte</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--sky);">👤</div><span class="block-title">Motifs et spécificités adulte</span></div>
+    <div class="two-col">
+      <div>
+        <p><strong>Motifs fréquents :</strong></p>
+        <ul>
+          <li>Travail (burn-out, conflits)</li>
+          <li>Couple, divorce</li>
+          <li>Grossesse, maternité, post-partum</li>
+          <li>Addictions</li>
+          <li>Deuils</li>
+          <li>Traumatisme (souvent révélé en cours de suivi)</li>
+          <li>Phobies, TOCs</li>
+          <li>Passages à l'acte</li>
+          <li>Maladies chroniques somatiques</li>
+          <li>Angoisse (diffuse) vs anxiété (motif précis)</li>
+          <li>Schémas relationnels douloureux chroniques</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Spécificités :</strong></p>
+        <ul>
+          <li>Long temps de maturation avant de consulter</li>
+          <li>Souvent passé par un généraliste d'abord</li>
+          <li>Rempli de fantasmes sur le psy et l'entretien</li>
+          <li>Très anxieux aux premières consultations</li>
+          <li>S'intéresser au <strong>cheminement</strong> pour venir (permet d'appréhender la demande)</li>
+        </ul>
+        <div class="note" style="margin-top:0.6rem;"><p>💡 En plus, la société voit mal la fragilité — il faut en tenir compte. Cela change progressivement avec les réseaux sociaux.</p></div>
+        <p style="margin-top:0.75rem;"><strong>Questions d'entrée :</strong></p>
+        <ul>
+          <li>« Qu'est-ce qui vous amène aujourd'hui ? »</li>
+          <li>La demande manifeste cache souvent la vraie problématique</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TECHNIQUES D'ÉCOUTE ===== -->
+<div id="techniques" class="section">
+  <div class="stitle">Techniques d'écoute et d'intervention</div>
+  <div class="ssub">Les niveaux d'écoute, les compétences non-additives et additives. Contenu TD 3 & 4.</div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--sky);">👂</div><span class="block-title">Les 4 niveaux d'écoute</span></div>
+    <div style="display:flex; flex-direction:column; gap:0.6rem; margin-top:0.25rem;">
+      <div class="cbox" style="background:var(--sky); border:1px solid rgba(44,111,212,0.15);">
+        <p><strong style="color:var(--sky-d);">1. Messages verbaux</strong> — ce qui est dit explicitement</p>
+      </div>
+      <div class="cbox" style="background:var(--mint); border:1px solid rgba(46,158,114,0.15);">
+        <p><strong style="color:var(--mint-d);">2. Messages non verbaux</strong> — attitude corporelle, gestes, mimiques, regards</p>
+      </div>
+      <div class="cbox" style="background:var(--lav); border:1px solid rgba(124,111,212,0.15);">
+        <p><strong style="color:var(--lav-d);">3. Paralinguistique</strong> — ton, volume, rapidité, logorrhée, débit</p>
+      </div>
+      <div class="cbox" style="background:var(--peach); border:1px solid rgba(212,102,58,0.15);">
+        <p><strong style="color:var(--peach-d);">4. Vigilance à ce qui se passe en soi</strong> — contre-transfert, résonances personnelles</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sh2">Compétences non-additives (on ne rajoute rien)</h2>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--mint);">🔄</div><span class="block-title">Reflets et reformulations</span></div>
+    <ul>
+      <li>On reprend l'essentiel du message — on vise la <strong>centralité</strong> de ce qu'il a dit</li>
+      <li>On dit de façon plus concise et on vérifie : « coupez-moi si je me trompe »</li>
+      <li>On fait comprendre au patient qu'il est écouté et bien compris</li>
+      <li>→ Augmentation de la confiance, encourage à aller plus loin</li>
+    </ul>
+    <div class="two-col" style="margin-top:0.75rem;">
+      <div>
+        <p><strong>Types de reflets :</strong></p>
+        <ul>
+          <li><strong>Reflet sur le contenu</strong> (reformulation verbale)</li>
+          <li><strong>Reflet d'action, d'intention, de pensée</strong></li>
+          <li><strong>Reflet de sentiment :</strong> « vous avez l'air découragé… », « je vois que cette situation vous affecte »</li>
+          <li><strong>Reflet sur le non-verbal :</strong> « je remarque que vous souriez en disant ça… »</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Effets :</strong></p>
+        <ul>
+          <li>Montre qu'on est à l'écoute → confiance</li>
+          <li>Favorise l'autonomie psychique du patient</li>
+          <li>Encourage à aller plus loin dans l'analyse</li>
+          <li>Permet au patient de prendre en compte ses sentiments</li>
+        </ul>
+        <div class="warn" style="margin-top:0.5rem;"><p>⚠️ Si uniquement des reflets → peut sembler passif, non naturel, non-engageant.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--butter);">❓</div><span class="block-title">Questions ouvertes</span></div>
+    <ul>
+      <li>Nécessitent une réponse élaborée (pas oui/non)</li>
+      <li><strong>Guidées par le désir de comprendre</strong> — pas par la curiosité malsaine</li>
+      <li>⚠️ Éviter les alternatives : « triste ou en colère ? » → ce sont nos projections, pas les siennes</li>
+      <li>⚠️ Si trop nombreuses : interrogatoire, méfiance du patient</li>
+      <li>Biais de confirmation : si on creuse trop un sujet, le patient finit par trouver un problème même s'il n'y en a pas</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--lav);">🤫</div><span class="block-title">Les silences</span></div>
+    <ul>
+      <li>Moments d'exploration de soi, de réflexion à de nouvelles directions</li>
+      <li>Permettent de souffler entre des sujets difficiles → aide l'introspection</li>
+      <li>Souvent après un silence : le patient relance avec quelque chose d'intéressant</li>
+      <li><strong>Silences actifs</strong> (élaboration) vs <strong>silences de gêne ou d'évitement</strong></li>
+    </ul>
+    <p style="margin-top:0.6rem; font-size:13.5px; color:var(--text2);"><strong>Comment intervenir face aux silences :</strong></p>
+    <ul style="margin-top:0.3rem;">
+      <li>Dans un premier temps : <strong>respecter</strong> le silence, être vigilant aux signaux non verbaux</li>
+      <li>Puis inviter à parler de son expérience par des reflets pour aider à mettre en mots le cheminement intérieur</li>
+      <li>⚠️ Apprendre à supporter les silences sans que ça soit gênant pour soi</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--sage);">📝</div><span class="block-title">Les résumés</span></div>
+    <ul>
+      <li>Combinaison de reflets qui fait le point et vérifie qu'on est bien centré sur le problème</li>
+      <li>Permet de <strong>faire des liens</strong> entre les différentes dimensions</li>
+      <li>Ponctue l'entretien, donne un rythme, redonne une directionnalité</li>
+      <li>Utile quand on est « perdu » dans l'entretien, ou pour montrer comment le patient a cheminé</li>
+      <li>Différent de la reformulation : c'est une synthèse globale</li>
+    </ul>
+  </div>
+
+  <h2 class="sh2">Compétences additives (on propose notre regard)</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--peach);">🔗</div><span class="block-title">Liens, confrontation, immédiateté, dévoilement, interprétation</span></div>
+    <div class="two-col">
+      <div>
+        <ul>
+          <li><strong>Liens :</strong> relier 2 propos du discours du patient → lui proposer</li>
+          <li><strong>Confrontation :</strong> proposer une explication à ce qui semble contradictoire dans le discours (ambivalences repérées)</li>
+          <li><strong>Immédiateté :</strong> nommer quelque chose qui est en train de se vivre dans la relation</li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li><strong>Dévoilement de soi :</strong> communiquer quelque chose de son propre vécu quand c'est aidant. Ne parler que de difficultés résolues → parler des ressources. Toujours vérifier avec l'autre.</li>
+          <li><strong>Interprétation :</strong> donner du sens à quelque chose d'inconscient. Toujours le proposer en laissant l'espace — c'est au patient de prendre ou non (peut être repris plus tard).</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warn" style="margin-top:0.75rem;"><p>⚠️ Les compétences additives s'utilisent seulement quand la relation est établie (2e partie de l'entretien). Elles touchent à la zone aveugle — peuvent être blessantes ou intrusives si mal utilisées.</p></div>
+    <div class="note"><p>💡 <strong>Fenêtre de Johari :</strong> En exploration/compréhension on travaille sur la zone consciente et cachée. Les compétences additives aident à travailler sur la zone aveugle — mais seulement si le patient est prêt.</p></div>
+  </div>
+
+  <h2 class="sh2">La résistance</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--rose);">🛡️</div><span class="block-title">Comment gérer la résistance</span></div>
+    <p>La résistance = tout ce que le patient ne peut pas dire pour le moment (pas encore assez en confiance, inconscient refuse ce sujet).</p>
+    <div class="two-col" style="margin-top:0.75rem;">
+      <div>
+        <p><strong>3 étapes :</strong></p>
+        <ol>
+          <li>L'identifier, la repérer</li>
+          <li>Évaluer son impact sur le psychologue (locus, besoins psych.)</li>
+          <li>Renforcer la qualité de la relation, le climat empathique, redéfinir les objectifs, renvoyer des ressources, refléter la résistance</li>
+        </ol>
+      </div>
+      <div>
+        <p><strong>Se situer entre :</strong></p>
+        <ul>
+          <li>Besoin d'être avec les autres ET besoin de se différencier</li>
+          <li>Partage/compassion ET trop loin</li>
+          <li>Trop proche de la subjectivité ET rester dans la sienne</li>
+        </ul>
+        <p style="margin-top:0.5rem;"><strong>Position idéale = Résonance :</strong> s'approcher de la subjectivité de l'autre avec un cadre, une directionnalité, de la professionnalité.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sh2">Analyse d'un entretien — grille d'analyse</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--lav);">🔍</div><span class="block-title">Plan complet d'analyse (à connaître pour l'examen)</span></div>
+    <p><strong>I. Présentation</strong></p>
+    <ul style="margin-top:0.4rem;">
+      <li>1.1 L'institution | 1.2 Le psychologue | 1.3 Le patient (présentation, anamnèse, symptômes, hypothèses psychopathologiques de début) | 1.4 Le cadre spatio-temporel</li>
+      <li>1.5 Objectifs : analyse de la demande (qui demande ? quelle demande ? pour qui ?) + type d'entretien</li>
+    </ul>
+    <p style="margin-top:0.75rem;"><strong>II. Déroulement</strong></p>
+    <ul style="margin-top:0.4rem;">
+      <li>2.1 Remarques générales (succinct/prolixe, inhibition, effets des relances, évolution, relation)</li>
+      <li>2.2 Analyse détaillée de la dynamique interactive (locuteur, comment débute, mécanismes de défense, accidents du discours, verbal et non-verbal)</li>
+      <li>2.3 Interventions du psy (Porter + Blanchet, à qui adressées, à quoi servent-elles)</li>
+      <li>2.4 Transfert / Contre-transfert (transfert : étayage, séduction, distance, inhibition, agressivité ; CT : neutralité, écoute, contenance)</li>
+    </ul>
+    <p style="margin-top:0.75rem;"><strong>III. Conclusion</strong></p>
+    <ul style="margin-top:0.4rem;">
+      <li>3.1 Hypothèses psychopathologiques</li>
+      <li>3.2 Pertinence des interventions du psychologue</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== PORTER ===== -->
+<div id="porter" class="section">
+  <div class="stitle">Grille des attitudes de Porter</div>
+  <div class="ssub">6 attitudes du psychologue lors d'un entretien. Toujours au partiel — avec exemples tirés du cas « jeune de 19 ans qui hait son père pasteur ».</div>
+
+  <div class="ok"><p>✅ <strong>Au partiel :</strong> mettre en <strong>premier</strong> l'attitude la plus adaptée et argumenter, puis les suivantes. La <strong>Compréhension</strong> est presque toujours recommandée en début d'entretien.</p></div>
+
+  <table class="tbl">
+    <thead>
+      <tr><th>Attitude</th><th>Définition</th><th class="plus">✓ Avantages</th><th class="minus">✗ Risques</th><th>Exemple</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tbl-name">1. Solution immédiate</span><br><span class="pill p-peach">⚠️ Déconseillée</span></td>
+        <td>Conseil, suggestion, ordre. On pousse l'autre à l'action. On se substitue à lui.</td>
+        <td class="plus">Diminue l'anxiété sur le moment. Utile si danger imminent (TS, urgence).</td>
+        <td class="minus">Infantilisant. Crée dépendance. Ne favorise pas l'autonomie. Risque de culpabilité si la solution échoue. Boomerang. On travaille à sa place. Souvent on fait ça quand le patient renvoie l'impuissance.</td>
+        <td>« Je vous invite à aller voir un psychiatre qui vous prescrira des anxiolytiques. » / « Avez-vous envisagé d'en parler avec lui ? »</td>
+      </tr>
+      <tr>
+        <td><span class="tbl-name">2. Soutien</span><br><span class="pill p-butter">⚠️ Avec parcimonie</span></td>
+        <td>Réassurance, encouragements, consolation, compassion. Apaiser, soulager, dissiper les doutes.</td>
+        <td class="plus">Montre l'empathie. Essentiel pour que le patient continue. Peut dédramatiser ponctuellement. Encourager le patient à s'investir.</td>
+        <td class="minus">Risque de dépendance. Peut être vécu comme banalisation/minimisation/pitié. Le patient sent qu'il n'a pas été vraiment écouté (décalage intensité/minimisation). Peut augmenter l'agressivité ensuite.</td>
+        <td>✅ « J'ai bien entendu votre détresse concernant votre relation avec votre père. » / ❌ « Ce n'est pas si grave, c'est normal à votre âge, ça va passer. »</td>
+      </tr>
+      <tr>
+        <td><span class="tbl-name">3. Interprétation</span><br><span class="pill p-butter">⚠️ Pas en 1er entretien</span></td>
+        <td>Proposer un sens, une explication hypothétique sur le sens latent du discours ou de la conduite.</td>
+        <td class="plus">Peut formaliser les choses. Peut montrer qu'on essaie de comprendre. Peut faire avancer si bien ajustée et acceptée.</td>
+        <td class="minus">Jamais en 1er entretien. Position de sachant. Peut activer les mécanismes de défense. Risque de rupture si mal reçue. Peut être défensif de la part du psy. Si on voit la personne une seule fois : ne pas ouvrir des portes qu'on ne peut pas fermer.</td>
+        <td>« Peut-être que votre oedipe ne s'est pas passé correctement. » / « Je propose une idée — je ne sais pas ce que vous en pensez : votre haine pourrait être le reflet de votre peur de le perdre. »</td>
+      </tr>
+      <tr>
+        <td><span class="tbl-name">4. Évaluation</span><br><span class="pill p-peach">⚠️ Pas en psychothérapie</span></td>
+        <td>Exprimer un jugement de valeur (bien/mal, vrai/faux) sur les actes, pensées ou sentiments.</td>
+        <td class="plus">Utile en évaluation formelle (WAIS, WISC, expertise). Peut faciliter la relation si positif et opportun. Nécessaire pour repérer ce qui se décale de la norme.</td>
+        <td class="minus">Met le patient en position d'inégalité. Peut provoquer culpabilité, agressivité, dépendance. Un jugement positif implique qu'on peut aussi juger négativement → le patient aura peur de parler. Dangereux en milieu judiciaire.</td>
+        <td>❌ « Ce n'est pas bien de culpabiliser. » / ❌ « Vous devriez aimer votre père comme tout le monde. » / ✅ contexte bilan : « Votre progression depuis le mois dernier est notable. »</td>
+      </tr>
+      <tr>
+        <td><span class="tbl-name">5. Question</span><br><span class="pill p-lav">Avec parcimonie</span></td>
+        <td>Se renseigner, questionner, chercher à obtenir plus d'informations.</td>
+        <td class="plus">Montre de l'intérêt. Complète les informations. Facilite l'installation du dialogue. Peut aider à explorer le problème.</td>
+        <td class="minus">Si trop utilisé : interrogatoire, méfiance. Biais de confirmation (si on creuse trop un sujet, on finit par trouver un problème). Oriente dans une direction choisie par le psy → peut être perçu comme de la manipulation.</td>
+        <td>« Pouvez-vous m'en dire plus sur votre relation avec votre père ? Depuis combien de temps ressentez-vous cela ? »</td>
+      </tr>
+      <tr>
+        <td><span class="tbl-name">6. Compréhension</span><br><span class="pill p-mint">✅ Recommandée</span></td>
+        <td>Reformulation, reflet. S'assurer d'avoir bien compris. On recherche à comprendre du point de vue de l'autre.</td>
+        <td class="plus">Recommandée en début d'entretien. Favorise confiance et spontanéité. Facilite une prise de conscience plus claire. Donne au patient le sentiment d'être compris. Favorise l'autonomie psychique. Diminue la dépendance.</td>
+        <td class="minus">Si utilisée seule en excès : peut sembler passif, non naturel, non-engageant. « Qu'est-ce que vous entendez par… ? » tout le temps n'est pas naturel.</td>
+        <td>« Je comprends que vous éprouvez des sentiments violents envers votre père et que cela génère chez vous une certaine culpabilité — est-ce bien cela ? »</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="sh2">Mnémotechnique</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--lav);">💡</div><span class="block-title">S — S — I — E — Q — C</span></div>
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:0.75rem;">
+      <span class="pill p-peach">S — Solution immédiate ⚠️</span>
+      <span class="pill p-butter">S — Soutien (parcimonie)</span>
+      <span class="pill p-butter">I — Interprétation (pas en 1er)</span>
+      <span class="pill p-peach">E — Évaluation ⚠️</span>
+      <span class="pill p-lav">Q — Question (parcimonie)</span>
+      <span class="pill p-mint">C — Compréhension ★</span>
+    </div>
+    <p style="font-size:13px; color:var(--text3);">★ La Compréhension est l'attitude la plus recommandée, en particulier en début d'entretien.</p>
+  </div>
+</div>
+
+<!-- ===== BLANCHET ===== -->
+<div id="blanchet" class="section">
+  <div class="stitle">Grille d'Alain Blanchet — Techniques d'intervention</div>
+  <div class="ssub">Analyser les interventions du psychologue selon 2 axes : le mode (D/I/R) et le niveau (T/E/R). Toujours des questions au partiel.</div>
+
+  <div class="quote">
+    <p>Blanchet a montré comment, au travers de différentes techniques d'intervention, on peut partir d'un entretien qui porte sur les faits et la description, jusqu'à un entretien qui porte sur les processus inconscients derrière ces faits.</p>
+  </div>
+
+  <h2 class="sh2">Le tableau complet</h2>
+  <div class="bg">
+    <div class="bgc hd"></div>
+    <div class="bgc hd">Déclaratif (D)<br><span style="font-weight:400;font-style:italic;text-transform:none;">Psy affirme / propose</span></div>
+    <div class="bgc hd">Interrogatif (I)<br><span style="font-weight:400;font-style:italic;text-transform:none;">Psy questionne</span></div>
+    <div class="bgc hd">Réitératif (R)<br><span style="font-weight:400;font-style:italic;text-transform:none;">Psy reformule / répète</span></div>
+    <div class="bgc hd">Niveau</div>
+
+    <div class="bgc rn">6</div>
+    <div class="bgc">Réfléchit une attitude ou sentiment <em>implicite</em></div>
+    <div class="bgc">Demande une réflexion sur son attitude ou des sentiments</div>
+    <div class="bgc">Reformule une attitude ou sentiment <em>explicite</em></div>
+    <div class="bgc lbl lbl-ref" rowspan="2" style="grid-row:span 2;">Réflexif</div>
+
+    <div class="bgc rn">5</div>
+    <div class="bgc">Réfléchit un contenu <em>implicite</em> (interprétation)</div>
+    <div class="bgc">Demande un approfondissement du contenu</div>
+    <div class="bgc">Reformule un contenu <em>explicite</em></div>
+
+    <div class="bgc rn">4</div>
+    <div class="bgc">Complémente</div>
+    <div class="bgc">Demande une explication</div>
+    <div class="bgc">Anticipe sur la suite du discours</div>
+    <div class="bgc lbl lbl-exp" rowspan="2" style="grid-row:span 2;">Expressif</div>
+
+    <div class="bgc rn">3</div>
+    <div class="bgc">Donne son point de vue sur la question</div>
+    <div class="bgc">Demande une précision</div>
+    <div class="bgc">Répète ce qui vient d'être dit</div>
+
+    <div class="bgc rn">2</div>
+    <div class="bgc">Prend position sur un thème nouveau</div>
+    <div class="bgc">Demande de développement d'un thème nouveau</div>
+    <div class="bgc">Relance sur un thème nouveau</div>
+    <div class="bgc lbl lbl-the">Thématique</div>
+  </div>
+
+  <h2 class="sh2">Comprendre les 2 axes</h2>
+  <div class="two-col">
+    <div class="block">
+      <div class="block-hd"><div class="block-ico" style="background:var(--lav);">D·I·R</div><span class="block-title">Axe du mode (horizontal)</span></div>
+      <ul>
+        <li><strong>Déclaratif (D) :</strong> le psy prend l'initiative, affirme, propose quelque chose. Contenu souvent implicite.</li>
+        <li><strong>Interrogatif (I) :</strong> le psy pose une question.</li>
+        <li><strong>Réitératif (R) :</strong> le psy reformule, répète, reflète. Reprend l'explicite du discours.</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="block-hd"><div class="block-ico" style="background:var(--mint);">T·E·R</div><span class="block-title">Axe du niveau (vertical)</span></div>
+      <ul>
+        <li><strong>Thématique (2) :</strong> faits concrets, thème nouveau. Niveau superficiel.</li>
+        <li><strong>Expressif (3-4) :</strong> détails, précisions, explications, compléments. Niveau intermédiaire.</li>
+        <li><strong>Réflexif (5-6) :</strong> représentations mentales, affects, sentiments, inconscient. Niveau profond.</li>
+      </ul>
+      <p style="margin-top:0.5rem; font-size:12.5px; color:var(--text3);">TER → on gravit les niveaux au plan thérapeutique. DIR → on part du concret vers l'inconscient.</p>
+    </div>
+  </div>
+
+  <h2 class="sh2">Tous les exemples (cas : jeune de 19 ans qui hait son père pasteur)</h2>
+  <div class="block" style="background:var(--butter); border-color:rgba(196,138,10,0.2);">
+    <p style="font-size:13.5px; color:var(--text2);"><em>Cas de référence : Un jeune de 19 ans dit haïr son père pasteur sans raison car il est très juste, ce qui lui fait ressentir des remords.</em></p>
+  </div>
+  <table class="tbl" style="margin-top:0.5rem;">
+    <thead><tr><th>Code</th><th>Niveau × Mode</th><th>Exemple</th><th>Ce que ça permet</th></tr></thead>
+    <tbody>
+      <tr><td><strong>I2</strong></td><td>Interrogatif + Thématique</td><td>« Quel travail faites-vous ? »</td><td>Recueillir des faits sur un nouveau thème</td></tr>
+      <tr><td><strong>R2</strong></td><td>Réitératif + Thématique</td><td>« Parlons maintenant de votre relation avec votre mère. »</td><td>Relancer sur un nouveau thème</td></tr>
+      <tr><td><strong>D2</strong></td><td>Déclaratif + Thématique</td><td>« Je vous propose qu'on parle de votre enfance. »</td><td>Introduire un nouveau sujet</td></tr>
+      <tr><td><strong>I3</strong></td><td>Interrogatif + Expressif</td><td>« Pouvez-vous me donner plus de détails ? » / « Et avec votre mère ? »</td><td>Approfondir, obtenir des précisions</td></tr>
+      <tr><td><strong>R3</strong></td><td>Réitératif + Expressif</td><td>« Vous avez dit que votre père est juste et bon — pouvez-vous me donner des exemples ? »</td><td>Répéter + demander des précisions</td></tr>
+      <tr><td><strong>D3</strong></td><td>Déclaratif + Expressif</td><td>« Je pense que cette situation vous met en difficulté. »</td><td>Donner son point de vue sur la situation</td></tr>
+      <tr><td><strong>I5</strong></td><td>Interrogatif + Réflexif (contenu)</td><td>« Qu'est-ce qu'un père / un homme juste et bon pour vous ? »</td><td>Accéder aux représentations mentales</td></tr>
+      <tr><td><strong>R5</strong></td><td>Réitératif + Réflexif (contenu)</td><td>« Vous pensez qu'un père de famille doit être comme un chef, responsable de la maison. »</td><td>Reformuler une représentation mentale</td></tr>
+      <tr><td><strong>D5</strong></td><td>Déclaratif + Réflexif (contenu)</td><td>« Peut-être que vous idéalisez trop ce qu'est un père, et qu'à la moindre faute vous vous énervez. »</td><td>Proposer une interprétation sur les cognitions</td></tr>
+      <tr><td><strong>I6</strong></td><td>Interrogatif + Réflexif (sentiment)</td><td>« Quel est votre ressenti vis-à-vis de la situation avec votre père ? »</td><td>Accéder aux affects, à la dimension émotionnelle</td></tr>
+      <tr><td><strong>R6</strong></td><td>Réitératif + Réflexif (sentiment)</td><td>« Vous en ressentez des remords — donc ça vous fait du mal. »</td><td>Reformuler un sentiment explicite</td></tr>
+      <tr><td><strong>D6</strong></td><td>Déclaratif + Réflexif (sentiment)</td><td>« Il est possible que votre haine soit le reflet de votre peur de perdre votre père. »</td><td>Proposer une interprétation sur les affects</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note" style="margin-top:1rem;"><p>📝 <strong>Au partiel :</strong> pour chaque intervention, justifier le niveau. Ex : « C'est Interrogatif car on pose une question, et Réflexif niveau 6 car on questionne les affects/sentiments du patient. Cette intervention permet d'accéder à la dimension émotionnelle et de favoriser l'élaboration. »</p></div>
+</div>
+
+<!-- ===== ANAMNESE ===== -->
+<div id="anamn" class="section">
+  <div class="stitle">Anamnèse & Premier entretien</div>
+  <div class="ssub">Ce qu'il faut recueillir, comment se présenter, et le contenu selon l'âge.</div>
+
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--lav);">🎯</div><span class="block-title">Le 1er entretien — ce qu'il faut toujours inclure</span></div>
+    <div class="step"><div class="step-num" style="background:var(--lav);color:var(--lav-d);">1</div><p><strong>Présentation :</strong> nom et fonction — expliquer ce qu'est un psychologue, casser les stéréotypes (≠ médecin, ≠ lecture de pensée). Authenticité : ne pas changer son style vestimentaire, tatouages pas forcément cachés.</p></div>
+    <div class="step"><div class="step-num" style="background:var(--mint);color:var(--mint-d);">2</div><p><strong>L'institution :</strong> nom complet, cadre légal (hospitalier, médico-social, scolaire, libéral), présentation de l'équipe, sa place dans l'équipe, les collègues vus éventuellement.</p></div>
+    <div class="step"><div class="step-num" style="background:var(--butter);color:var(--butter-d);">3</div><p><strong>La loi :</strong> secret professionnel + <em>ses limites</em> (danger pour soi ou autrui, surtout si mineur). Secret partagé en institution — mais tout n'est pas bon à dire aux collègues.</p></div>
+    <div class="step"><div class="step-num" style="background:var(--sky);color:var(--sky-d);">4</div><p><strong>Contextualiser la demande :</strong> type de rencontre (évaluation/investigation vs psychothérapie), qui l'a demandée, pourquoi, nombre de séances prévu. Si injonction de soin : à travailler — pas parce qu'obligatoire qu'il ne doit pas s'investir.</p></div>
+    <div class="step"><div class="step-num" style="background:var(--peach);color:var(--peach-d);">5</div><p><strong>Déroulement :</strong> durée, fréquence. Tarif discuté en face à face (pas au téléphone). Fréquence régulière aide à maintenir le cadre en psychothérapie.</p></div>
+    <div class="step"><div class="step-num" style="background:var(--sage);color:var(--sage-d);">6</div><p><strong>Ouvrir :</strong> « Qu'est-ce qui vous amène aujourd'hui ? » — Si la demande au téléphone et en présentiel diffèrent, le montrer au patient pour qu'il puisse en dire quelque chose. Ça le met en confiance (il ne peut pas se tromper).</p></div>
+    <div class="warn"><p>⚠️ 1er entretien souvent non payant — on ne travaille pas encore vraiment, on recueille les infos et on décide de l'orientation. Au moins 2 jours entre la prise de RDV et l'entretien pour que la personne puisse cheminer.</p></div>
+    <div class="warn"><p>⚠️ Ne jamais remercier le patient d'être venu — il vient pour lui, pas pour nous. Ça crée une asymétrie.</p></div>
+  </div>
+
+  <h2 class="sh2">Anamnèse chez l'enfant</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--sage);">🧒</div><span class="block-title">Questions anamnestiques — enfant</span></div>
+    <p style="margin-bottom:0.6rem;"><strong>1er entretien toujours avec les parents.</strong> Observer l'enfant en permanence (comportement, jeux, regards, émotions). Ne pas interpréter un dessin sans la parole de l'enfant.</p>
+    <div class="two-col">
+      <ul class="cklist">
+        <li>Histoire de la grossesse, désir d'enfant, accouchement</li>
+        <li>Congé maternité</li>
+        <li>Premières interactions précoces</li>
+        <li>Intégration des grandes fonctions : sommeil, alimentation, langage</li>
+        <li>Modes de garde</li>
+        <li>Apprentissage moteur, propreté</li>
+      </ul>
+      <ul class="cklist">
+        <li>Séparations mère-enfant (crèche, école, voyages scolaires)</li>
+        <li>Entrée à l'école, apprentissages cognitifs</li>
+        <li>Relations aux pairs, à la fratrie, aux adultes</li>
+        <li>Environnement familial : avec qui il vit, contexte socio-économique</li>
+        <li>Ce qu'il aime faire, ses loisirs, animaux</li>
+        <li>Quand un parent parle : tenir compte de la réaction de l'enfant</li>
+      </ul>
+    </div>
+    <div class="note" style="margin-top:0.75rem;"><p>💡 Demander à l'enfant : « Est-ce que tu sais pourquoi on se voit ? Sais-tu ce qu'est un psychologue ? » → lui confirmer que c'est lui l'acteur de l'événement, qu'on est là pour lui.</p></div>
+  </div>
+
+  <h2 class="sh2">Anamnèse chez l'adolescent</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--peach);">🧑</div><span class="block-title">Questions anamnestiques — adolescent</span></div>
+    <p style="margin-bottom:0.6rem;">L'objectif n'est <em>pas</em> de faire un interrogatoire anamnestique — c'est de créer le contact et de comprendre l'environnement.</p>
+    <div class="two-col">
+      <ul class="cklist">
+        <li>Demander à l'ado s'il veut être seul ou avec ses parents</li>
+        <li>Avec qui il vit à la maison</li>
+        <li>Ses amis, sa classe</li>
+        <li>Ses centres d'intérêts, loisirs</li>
+        <li>Son projet professionnel</li>
+      </ul>
+      <ul class="cklist">
+        <li>Comment ça se passe à l'école (scolaire + social)</li>
+        <li>Comment ça se passe avec les parents, la fratrie</li>
+        <li>Historique d'enfance si approprié</li>
+        <li>Questions ouvertes — pas d'interrogatoire</li>
+        <li>Adapter le langage sans caricaturer</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sh2">Anamnèse chez l'adulte</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--sky);">👤</div><span class="block-title">Questions anamnestiques — adulte</span></div>
+    <div class="two-col">
+      <div>
+        <p><strong>Sur les symptômes :</strong></p>
+        <ul class="cklist">
+          <li>Quand ont commencé vos symptômes ?</li>
+          <li>Quels sont-ils exactement ?</li>
+          <li>À quel moment sont-ils plus présents ? Quelle fréquence ?</li>
+          <li>Que ressentez-vous lorsque les symptômes apparaissent ?</li>
+          <li>Est-ce que ça crée des conséquences dans votre vie ?</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Sur le contexte de vie :</strong></p>
+        <ul class="cklist">
+          <li>Situation familiale (formula ouverte : pas « êtes-vous marié ? »)</li>
+          <li>Contexte professionnel</li>
+          <li>Contexte social, relationnel</li>
+          <li>Comment était-il enfant</li>
+          <li>Événements de vie à potentiel traumatique (subjectif)</li>
+          <li>Ressources et limites dans sa vie</li>
+          <li>Système de valeurs, croyances, hypothèses sur ses symptômes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note" style="margin-top:0.75rem;"><p>💡 <strong>Clarification multidimensionnelle :</strong> émotionnel + cognitif + comportemental + contexte + conséquences + désir du patient. Observer en permanence le comportement non-verbal.</p></div>
+    <div class="warn"><p>⚠️ Pas de questions qui impliquent un jugement de valeur ou un jugement social. Chemins détournés pour obtenir des informations sans être intrusif. Respecter les résistances — ne pas forcer les sujets évités.</p></div>
+  </div>
+</div>
+
+<!-- ===== TRANSFERT ===== -->
+<div id="transfert" class="section">
+  <div class="stitle">Transfert & Contre-transfert</div>
+  <div class="ssub">Dynamique relationnelle fondamentale. Présents dès le 1er entretien.</div>
+
+  <div class="warn"><p>⚠️ Le transfert et le contre-transfert sont à l'œuvre dès les premières rencontres. Ne pas sous-estimer le 1er rendez-vous.</p></div>
+
+  <div class="two-col" style="margin-top:1rem;">
+    <div class="block" style="border-top:3px solid var(--lav-d);">
+      <div class="block-hd"><div class="block-ico" style="background:var(--lav);">→</div><span class="block-title">Transfert (patient → psy)</span></div>
+      <p style="margin-bottom:0.6rem;">Processus au cours duquel des <strong>sentiments ou désirs inconscients envers les premiers objets investis</strong> dans l'histoire du sujet (le plus souvent les parents) se trouvent reportés sur le psychologue.</p>
+      <p style="margin-bottom:0.6rem;">Dans une relation du présent, dans le cadre de l'entretien, <strong>se rejoue quelque chose d'une relation du passé.</strong></p>
+      <ul>
+        <li>Peut se manifester dès le 1er entretien</li>
+        <li>Formes : étayage, séduction, distance, inhibition, agressivité, admiration</li>
+        <li>C'est un <strong>levier thérapeutique</strong> — à analyser, pas à ignorer</li>
+        <li>Il peut aussi venir du patient (asymétrie d'admiration) → à analyser</li>
+      </ul>
+      <div class="note" style="margin-top:0.6rem;"><p>Ex : patient qui demande sans cesse de l'eau ou de brancher son téléphone → transfert maternel développé avec le psy.</p></div>
+    </div>
+    <div class="block" style="border-top:3px solid var(--mint-d);">
+      <div class="block-hd"><div class="block-ico" style="background:var(--mint);">←</div><span class="block-title">Contre-transfert (psy → patient)</span></div>
+      <p style="margin-bottom:0.6rem;"><strong>La somme des formations affectives qui conditionnent la perception et les réactions du psychothérapeute envers son patient.</strong></p>
+      <p style="margin-bottom:0.6rem;">Ce que le psy ressent en écoutant le patient. Peut signaler quelque chose du vécu du patient.</p>
+      <ul>
+        <li>Chaque patient ne suscite pas la même chose chez le psy</li>
+        <li>Ex : se sentir illégitime → peut-être que le patient ressent aussi cette illégitimité</li>
+        <li>Ex : se sentir impuissant → souvent ce que le patient ressent lui-même</li>
+        <li>⚠️ On peut projeter notre propre peur, notre propre vie</li>
+        <li>Ne pas « transférer » d'un patient à l'autre</li>
+        <li>Il existe autant de T/CT que de patients × psychologues</li>
+      </ul>
+      <div class="note" style="margin-top:0.6rem;"><p>La supervision et la thérapie personnelle permettent de prendre du recul. Que faire si on a les larmes aux yeux ? Ne pas les essuyer discrètement — les nommer : « votre histoire est émouvante pour moi ».</p></div>
+    </div>
+  </div>
+
+  <h2 class="sh2">La neutralité bienveillante — trouver la bonne distance</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--butter);">⚖️</div><span class="block-title">Se situer dans la relation</span></div>
+    <p style="margin-bottom:0.75rem;">On <em>tend</em> vers la neutralité bienveillante sans jamais y parvenir totalement — on est humain.</p>
+    <div style="display:flex; flex-direction:column; gap:0.6rem;">
+      <div class="cbox" style="background:var(--peach); border:1px solid rgba(212,102,58,0.15);">
+        <p><strong style="color:var(--peach-d);">Trop proche — consonance :</strong> <span style="color:var(--text2);">Trop de reflets, pas de directionnalité. Hypothèses issues de son propre univers de références. On perd la subjectivité du patient. Identification au patient → perte de disponibilité psychique.</span></p>
+      </div>
+      <div class="cbox" style="background:var(--mint); border:1px solid rgba(46,158,114,0.15);">
+        <p><strong style="color:var(--mint-d);">Position idéale — Résonance ✅ :</strong> <span style="color:var(--text2);">S'approcher de la subjectivité de l'autre avec un cadre, une directionnalité, de la centralité et de la professionnalité.</span></p>
+      </div>
+      <div class="cbox" style="background:var(--sky); border:1px solid rgba(44,111,212,0.15);">
+        <p><strong style="color:var(--sky-d);">Trop loin — dissonance :</strong> <span style="color:var(--text2);">Partage, compassion, soutien excessif. On perd la professionnalité. Besoin de se différencier trop fort.</span></p>
+      </div>
+    </div>
+    <p style="margin-top:0.75rem; font-size:13px; color:var(--text2);">🔁 Prendre soin de soi : supervision, thérapie personnelle, formation continue. Parfois s'arrêter quand on n'est plus bénéfique pour les patients.</p>
+  </div>
+</div>
+
+<!-- ===== ANNALES ===== -->
+<div id="annales" class="section">
+  <div class="stitle">Annales — Sujets d'examen 2021-2024</div>
+  <div class="ssub">Cliquez sur « Voir correction » pour afficher les éléments de réponse.</div>
+
+  <div class="acase">
+    <div class="acase-hd">
+      <span class="abadge" style="background:var(--lav);color:var(--lav-d);">Psycho clinique</span>
+      <span class="acase-title">Mme L — 81 ans, gériatrie, troubles cognitifs & deuil</span>
+      <span class="ayear">Session 1 • 2021-2022</span>
+    </div>
+    <div class="acase-body">
+      <p>Mme L, 81 ans, consulte l'hôpital de jour gériatrique à la demande du médecin gériatre. Elle verbalise facilement ses difficultés cognitives (organisation, mémoire, concentration), a arrêté de conduire. Se met à sangloter lors des questions sur son humeur puis se reprend. Veuve depuis ~3 ans (mari décédé subitement d'infarctus). Avait évoqué lors d'une opération espérer mourir sous anesthésie. Activités réduites, ne va plus à son club de bridge. MMS coté 20/30 (pathologique &lt;24). BEC96 proposée.</p>
+      <div class="qs">
+        <div class="qi"><div class="qn">1</div><div class="qtext">Présentez-vous à Mme L et expliquez-lui le cadre et la finalité de l'entretien (diagnostic différentiel : troubles cognitifs vs troubles dépressifs).</div></div>
+        <div class="qi"><div class="qn">2</div><div class="qtext">Mme L vous tient un long discours sur le décès de son mari et conclut : « Venir vous voir me réconforte un peu car il y en a qui savent et comprennent. » Qu'est-ce que vous lui répondez ?</div></div>
+        <div class="qi"><div class="qn">3</div><div class="qtext">De quelle(s) attitude(s) (Porter) faites-vous preuve ? Expliquez leurs finalités. Quelles attitudes sont à proscrire ?</div></div>
+        <div class="qi"><div class="qn">4</div><div class="qtext">Construisez une trame d'entretien. Formulez au moins 6 questions/interventions selon la grille de Blanchet.</div></div>
+        <div class="qi"><div class="qn">5</div><div class="qtext">Inventez une version pour clore l'entretien et reformulez les observations cliniques à l'issue.</div></div>
+      </div>
+    </div>
+    <button class="tbtn" onclick="toggleCorr(this)">💡 Voir les éléments de correction</button>
+    <div class="corr">
+      <h4>Éléments de correction</h4>
+      <p><strong>Q1 — Présentation et cadre :</strong></p>
+      <ul>
+        <li>« Bonjour Mme L, je suis [prénom nom], psychologue au sein du service de gériatrie. »</li>
+        <li>Expliquer le rôle du psychologue (≠ médecin, ≠ lecture de pensée, moment d'échange)</li>
+        <li>Préciser la finalité : « Nous allons nous voir pendant environ [durée] pour faire le point sur votre état psychologique. L'objectif est notamment de voir ce qui peut relever de difficultés de mémoire et ce qui peut relever de l'humeur. »</li>
+        <li>Rappeler le secret professionnel et ses limites</li>
+        <li>Préciser qui a demandé (le médecin gériatre) et pourquoi</li>
+        <li>Inviter : « Avez-vous des questions avant qu'on commence ? »</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q2 — Réponse au discours sur le deuil :</strong></p>
+      <ul>
+        <li>Attitude principale : <strong>Compréhension</strong> — reformuler et refléter ce qu'elle exprime</li>
+        <li>Ex : « Je vous entends. La perte de votre mari après 52 ans de vie commune est quelque chose d'immense, et cette douleur est encore très présente pour vous. »</li>
+        <li>Puis reflet sur le sentiment de réconfort : « Vous dites que venir ici vous réconforte — qu'est-ce que vous entendez par là ? » (I6 — Réflexif affect)</li>
+        <li>⚠️ Ne pas minimiser ni rassurer trop vite (≠ Soutien banalisant)</li>
+        <li>⚠️ Repérer l'idéation passive de mort (avoir espéré mourir sous anesthésie) → à explorer avec douceur, ne pas esquiver</li>
+        <li>⚠️ Ne pas interpréter trop tôt (pas de : « vous avez peut-être du mal à investir l'avenir depuis la mort de votre mari »)</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q3 — Attitudes Porter :</strong></p>
+      <ul>
+        <li><strong>Recommandée :</strong> Compréhension (reformulations, reflets de sentiment)</li>
+        <li><strong>Question</strong> ouverte avec parcimonie (pour explorer les dimensions cognitives et thymiques)</li>
+        <li><strong>Soutien</strong> ponctuel possible — mais pas banalisant</li>
+        <li><strong>À proscrire :</strong> Solution immédiate (« vous devriez aller dans un groupe de parole »), Évaluation (« vous n'allez pas si mal »), Interprétation trop précoce</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q4 — Trame Blanchet (exemples) :</strong></p>
+      <ul>
+        <li><strong>I2</strong> : « Comment se passent vos journées actuellement ? » (faits, nouveau thème)</li>
+        <li><strong>I3</strong> : « Pouvez-vous me donner un exemple concret d'une situation où votre mémoire vous a posé problème ? » (précision)</li>
+        <li><strong>R3</strong> : « Vous avez mentionné ne plus lire — depuis combien de temps environ ? » (approfondissement du même thème)</li>
+        <li><strong>I6</strong> : « Qu'est-ce que vous ressentez lorsque ces difficultés apparaissent ? » (affects)</li>
+        <li><strong>R6</strong> : « Vous semblez très triste lorsque vous parlez de votre mari — est-ce que je me trompe ? » (reflet de sentiment)</li>
+        <li><strong>D5</strong> : « Il me semble que ces oublis sont devenus un poids important dans votre quotidien. » (réflexif contenu implicite)</li>
+        <li><strong>I5</strong> : « Pour vous, qu'est-ce que cela signifie de ne plus conduire ? » (représentations mentales)</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q5 — Clôture et observations cliniques :</strong></p>
+      <ul>
+        <li>Résumer : « Nous avons parlé de vos difficultés de mémoire et d'organisation, de votre quotidien, et de la douleur liée au deuil de votre mari. »</li>
+        <li>Lien avec l'objectif : « Ces éléments vont m'aider à compléter l'évaluation. »</li>
+        <li>Suite : mention du bilan neuropsychologique complémentaire</li>
+        <li><strong>Hypothèses cliniques :</strong> possible dépression avec symptômes cognitifs associés (ralentissement, difficultés de concentration, anhédonie, tristesse) vs TCL (troubles cognitifs légers) — le diagnostic différentiel nécessite le bilan complet. Idéation passive de mort à surveiller.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="acase">
+    <div class="acase-hd">
+      <span class="abadge" style="background:var(--mint);color:var(--mint-d);">Psycho clinique</span>
+      <span class="acase-title">Lina — 16 ans, CMP ados, crises d'angoisse</span>
+      <span class="ayear">Session 1 • 2022-2023</span>
+    </div>
+    <div class="acase-body">
+      <p>Lina, presque 16 ans, vient en CMP adolescents car crises d'angoisse pendant le cours de sport (ne plus pouvoir respirer, maux de tête, envie de vomir). Intensification depuis quelques mois, y compris à la maison. « Manque de confiance » en elle, dort mal, n'aime pas manger en public. Amis au lycée mais ne les voit pas en dehors. Frère aîné déprimé par le passé. Grand-mère maternelle suicidaire. Mère très présente, accompagne Lina et parle beaucoup de sa propre souffrance.</p>
+      <div class="qs">
+        <div class="qi"><div class="qn">1</div><div class="qtext">Comment engageriez-vous cette rencontre ? Explicitez ce que vous diriez et quels points semblent importants.</div></div>
+        <div class="qi"><div class="qn">2</div><div class="qtext">Quelles informations cliniques sembleraient importantes à investiguer ? Construisez une trame d'entretien.</div></div>
+        <div class="qi"><div class="qn">3</div><div class="qtext">Formulez 3 questions/interventions de niveaux différents (Blanchet) et expliquez ce qu'elles permettent.</div></div>
+        <div class="qi"><div class="qn">4</div><div class="qtext">Quelles attitudes (Porter) adopteriez-vous ? Dans quel but relationnel ?</div></div>
+        <div class="qi"><div class="qn">5</div><div class="qtext">Comment termineriez-vous l'entretien ?</div></div>
+      </div>
+    </div>
+    <button class="tbtn" onclick="toggleCorr(this)">💡 Voir les éléments de correction</button>
+    <div class="corr">
+      <h4>Éléments de correction</h4>
+      <p><strong>Q1 — Engager la rencontre :</strong></p>
+      <ul>
+        <li>Se présenter : « Je suis [nom], psychologue au CMP »</li>
+        <li>Demander à Lina si elle préfère être seule ou avec sa mère — respecter son choix</li>
+        <li>Expliquer le cadre : confidentialité (et ses limites si danger), durée, objectif du 1er entretien</li>
+        <li>Authenticité : adapter le langage sans caricaturer. Ne pas essayer de paraître cool.</li>
+        <li>Ouvrir sur elle : « Est-ce que tu sais pourquoi on se voit ? Qu'est-ce qu'on t'a dit ? »</li>
+        <li>Points importants : décrire les crises, leur contexte déclencheur, impact sur la vie scolaire/sociale, sommeil, alimentation en public</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q2 — Informations à investiguer :</strong></p>
+      <ul>
+        <li>Description précise des crises (quand, comment, fréquence, durée, déclencheurs)</li>
+        <li>Contexte familial : relation avec la mère (très présente, parle de sa propre souffrance) → possible surinvestissement, charge émotionnelle transmise</li>
+        <li>Grand-mère suicidaire → risque familial à explorer avec douceur</li>
+        <li>Frère : dépression passée → poids familial</li>
+        <li>Vie scolaire : s'ennuie, impression de ne pas être intéressante pour ses amis</li>
+        <li>Estime de soi (manque de confiance)</li>
+        <li>Sommeil, alimentation en public (peur du regard ?)</li>
+        <li>Idées suicidaires à explorer doucement (ATCD familiaux)</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q3 — 3 niveaux Blanchet :</strong></p>
+      <ul>
+        <li><strong>I2 — Thématique :</strong> « Comment ça se passe à l'école en ce moment ? » → recueillir des faits sur un nouveau thème</li>
+        <li><strong>R3 — Expressif :</strong> « Tu m'as dit que ça arrive surtout pendant le sport — est-ce que tu peux me décrire exactement ce qui se passe dans ces moments-là ? » → approfondir, obtenir des précisions</li>
+        <li><strong>I6 — Réflexif sentiment :</strong> « Quand tu penses à ces moments de crise, qu'est-ce que tu ressens là maintenant ? » → accéder aux affects, favoriser l'élaboration émotionnelle</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q4 — Attitudes Porter :</strong></p>
+      <ul>
+        <li>Principale : <strong>Compréhension</strong> — établir la confiance, montrer qu'on écoute sans juger → favorise l'autonomie psychique de Lina</li>
+        <li>Question ouverte avec parcimonie — éviter l'interrogatoire</li>
+        <li>Soutien ponctuel pour encourager Lina à continuer à s'exprimer</li>
+        <li>⚠️ Éviter Évaluation (jugement sur ses comportements), Solution immédiate</li>
+        <li>Objectif relationnel : créer une alliance thérapeutique, montrer que l'espace est sécurisant et que ce qu'elle dit reste confidentiel</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="acase">
+    <div class="acase-hd">
+      <span class="abadge" style="background:var(--butter);color:var(--butter-d);">Psychopathologie</span>
+      <span class="acase-title">M. JP — 30 ans, CMP adultes, anxiété & alcool</span>
+      <span class="ayear">Session rattrapage • 2024</span>
+    </div>
+    <div class="acase-body">
+      <p>M. JP, 30 ans, encadre 10 commerciaux, père de 2 jeunes enfants. Toujours angoissé mais ne l'a jamais montré ni verbalisé. Angoisses amplifiées depuis 2-3 ans, peur de « craquer ». A eu des idées suicidaires récemment. Le confinement lui a apporté un apaisement. Parents hauts profils (père PDG, mère chirurgienne) — valeur familiale : réussite professionnelle. A renoncé à un congé parental sans en parler à sa femme. Consommation d'alcool augmente. Sa femme menace de le quitter.</p>
+      <div class="qs">
+        <div class="qi"><div class="qn">1</div><div class="qtext">Comment engageriez-vous la rencontre ? Explicitez et argumentez la 1re phase. À quoi faut-il faire attention ?</div></div>
+        <div class="qi"><div class="qn">2</div><div class="qtext">Quels principaux éléments cliniques exploreriez-vous ? Quel type d'entretien ? Quel objectif ?</div></div>
+        <div class="qi"><div class="qn">3</div><div class="qtext">Quelle(s) attitude(s) (Porter) adopteriez-vous ? Dans quel but ? Que chercherez-vous à créer dans la relation ?</div></div>
+        <div class="qi"><div class="qn">4</div><div class="qtext">Quelle est la différence entre niveau expressif et niveau réflexif (Blanchet) ? Avantages de travailler sur les sentiments vs les faits ?</div></div>
+        <div class="qi"><div class="qn">5</div><div class="qtext">Comment termineriez-vous l'entretien ? Quels retours pourriez-vous faire à M. JP ?</div></div>
+      </div>
+    </div>
+    <button class="tbtn" onclick="toggleCorr(this)">💡 Voir les éléments de correction</button>
+    <div class="corr">
+      <h4>Éléments de correction</h4>
+      <p><strong>Q1 — 1re phase :</strong></p>
+      <ul>
+        <li>Se présenter, expliquer le rôle du psychologue au CMP</li>
+        <li>⚠️ M. JP est un homme qui ne montre jamais ses angoisses — il a fallu du courage pour venir. Ne pas le brusquer. Reconnaître implicitement ce chemin.</li>
+        <li>Confidentialité + limites (danger pour lui → idées suicidaires à explorer en douceur mais sans tarder)</li>
+        <li>Ouvrir avec douceur : « Qu'est-ce qui vous a décidé à venir nous voir aujourd'hui ? »</li>
+        <li>⚠️ Attention au contre-transfert : profil de manager peut sembler en contrôle → ne pas se laisser bercer par cette façade</li>
+        <li>⚠️ Idées suicidaires récentes → à prendre au sérieux dès le 1er entretien</li>
+        <li>Psychologie on travaille dans l'après-coup, jamais dans l'urgence — mais le risque suicidaire est une exception</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q2 — Éléments cliniques & type d'entretien :</strong></p>
+      <ul>
+        <li><strong>Type :</strong> semi-directif, d'évaluation/investigation — objectif : comprendre la demande, évaluer la situation, repérer les facteurs de risque</li>
+        <li><strong>À explorer :</strong> caractéristiques de l'anxiété (depuis quand, déclencheurs, fréquence), consommation d'alcool (automédication ? progressivité ?), idéations suicidaires (intensité, planification), relation conjugale, pression familiale/professionnelle</li>
+        <li><strong>Congruence valeurs/vie :</strong> voulait un congé parental mais a renoncé → conflit profond entre ses désirs et les valeurs familiales de réussite</li>
+        <li><strong>Facteurs de protection :</strong> veut que ses enfants aillent bien, apaisement pendant le confinement (retrait du monde professionnel) → ressource à explorer</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q3 — Attitudes Porter :</strong></p>
+      <ul>
+        <li><strong>Compréhension</strong> : reflets, reformulations — montrer qu'on écoute sans juger → sécuriser un homme qui ne demande jamais d'aide</li>
+        <li><strong>Question</strong> ouverte avec parcimonie — explorer les symptômes et leur contexte</li>
+        <li>Objectif relationnel : créer alliance thérapeutique, montrer que la souffrance peut être verbalisée sans jugement</li>
+        <li>⚠️ Éviter Évaluation (il se juge déjà énormément), Soutien excessif (peut sembler peu crédible face à quelqu'un habitué à « tenir »)</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q4 — Expressif vs Réflexif :</strong></p>
+      <ul>
+        <li><strong>Expressif (niv. 3-4) :</strong> porte sur les faits, les détails, les précisions. Ex : « Donnez-moi un exemple d'une situation récente où l'anxiété était forte. » → descriptif, factuel, reste en surface</li>
+        <li><strong>Réflexif (niv. 5-6) :</strong> porte sur les représentations mentales et les affects. Ex : « Qu'est-ce que cela représente pour vous de ne pas avoir pris ce congé parental ? » → accède au sens que ça a pour lui</li>
+        <li><strong>Avantage du réflexif :</strong> permet d'accéder à ce qui est au cœur de la souffrance, favorise l'élaboration psychique. Le factuel seul reste en surface et ne permet pas le changement.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="acase">
+    <div class="acase-hd">
+      <span class="abadge" style="background:var(--sage);color:var(--sage-d);">Psycho clinique</span>
+      <span class="acase-title">Famille avec enfants — CDE, signalement scolaire</span>
+      <span class="ayear">Session Décembre • 2024</span>
+    </div>
+    <div class="acase-body">
+      <p>Psychologue dans un Centre Départemental de l'Enfance. 3 enfants (6, 4, 2 ans). Parents investis, coopérants, très aimants. Père avec déficience intellectuelle légère (MDPH). Troubles du comportement des 2 aînés à l'école. Signalement scolaire : hypothèse que les enfants seraient en danger. Aucun signe de maltraitance détecté à l'issue de l'entretien.</p>
+      <div class="qs">
+        <div class="qi"><div class="qn">1-5</div><div class="qtext">Comment débutez-vous l'entretien ? Présentation ? Fonction ? Type d'entretien ?</div></div>
+        <div class="qi"><div class="qn">6</div><div class="qtext">Formulez une réponse pour illustrer chacune des 6 attitudes de Porter face à l'un des membres de la famille.</div></div>
+        <div class="qi"><div class="qn">7</div><div class="qtext">Effets produits par chaque attitude. Mécanismes de défense suscités ?</div></div>
+        <div class="qi"><div class="qn">8</div><div class="qtext">Formulez 2 interventions Blanchet : une de niveau expressif et une de niveau réflexif.</div></div>
+        <div class="qi"><div class="qn">9-10</div><div class="qtext">Comment mettre en mots les conclusions pour les parents ? Qu'est-ce qu'il faut éviter dans un retour ?</div></div>
+      </div>
+    </div>
+    <button class="tbtn" onclick="toggleCorr(this)">💡 Voir les éléments de correction</button>
+    <div class="corr">
+      <h4>Éléments de correction</h4>
+      <p><strong>Q1-5 — Démarrage :</strong></p>
+      <ul>
+        <li>Se présenter : nom + fonction. Expliquer le rôle du psy au CDE sans jargon.</li>
+        <li>Transparence : expliquer le contexte du signalement scolaire — ne pas le cacher. C'est aussi pour réduire l'asymétrie et la défiance.</li>
+        <li>Réduire l'asymétrie : parents probablement inquiets, en position défensive potentielle — leur montrer qu'on n'est pas là pour juger</li>
+        <li>Type : semi-directif d'évaluation — objectif : comprendre le fonctionnement familial, écarter ou non un danger pour les enfants</li>
+        <li>Intégrer les enfants dans l'entretien (observer comportements, permettre à l'aîné de prendre la parole)</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q6 — Les 6 attitudes Porter face à la mère (« j'ai du mal à tout gérer ») :</strong></p>
+      <ul>
+        <li><strong>Compréhension ✅ :</strong> « Je vous entends — gérer le travail, les devoirs et la maison avec trois jeunes enfants est effectivement un défi immense. »</li>
+        <li><strong>Soutien :</strong> « Vous faites de votre mieux, c'est déjà beaucoup. » (possible mais ne pas en faire trop)</li>
+        <li><strong>Question :</strong> « Pouvez-vous me donner un exemple de situation concrète où vous vous êtes sentie dépassée ? »</li>
+        <li><strong>Interprétation :</strong> « Peut-être que cette peur de ne pas être à la hauteur vient en écho à vos propres difficultés scolaires passées ? » (à utiliser avec précaution)</li>
+        <li><strong>Évaluation ⚠️ :</strong> « Vous semblez bien gérer malgré tout. » (risque : jugement qui crée dépendance)</li>
+        <li><strong>Solution immédiate ⚠️ :</strong> « Vous devriez demander une aide à domicile. » (à éviter : déresponsabilise, peut culpabiliser si ça ne marche pas)</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q8 — Blanchet :</strong></p>
+      <ul>
+        <li><strong>Niveau expressif (R3) :</strong> « Vous avez mentionné avoir peur de ne pas être à la hauteur — pouvez-vous me donner un exemple concret d'une situation de la semaine dernière ? » → approfondir un thème déjà évoqué, obtenir des détails</li>
+        <li><strong>Niveau réflexif sentiment (R6) :</strong> « Quand vous parlez de cette peur, quelque chose semble vous peser beaucoup — qu'est-ce que vous ressentez en ce moment ? » → accéder aux affects, favoriser l'élaboration émotionnelle</li>
+      </ul>
+      <p style="margin-top:0.75rem;"><strong>Q9-10 — Retour et ce qu'il faut éviter :</strong></p>
+      <ul>
+        <li><strong>Ce qu'il faut dire :</strong> parents très investis, aimants et soucieux du bien-être de leurs enfants. Les difficultés semblent liées à la gestion du quotidien, pas à de la maltraitance. Proposer une aide sociale et/ou éducative.</li>
+        <li><strong>Ce qu'il faut éviter :</strong> évaluation négative des parents (culpabilisation), formulations anxiogènes, interprétations excessives sur le handicap du père, minimisation des vraies difficultés, jugements de valeur.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MÉTHODO EXAM ===== -->
+<div id="methodo" class="section">
+  <div class="stitle">Méthode pour l'étude de cas</div>
+  <div class="ssub">Plans types pour répondre à chaque type de question au partiel. 3h, documents non autorisés, 2 copies doubles max.</div>
+
+  <div class="block" style="border-left:4px solid var(--lav-d);">
+    <div class="block-hd"><div class="block-ico" style="background:var(--lav);">📌</div><span class="block-title">Consignes à rappeler</span></div>
+    <ul>
+      <li>Choisir <strong>au choix</strong> l'un des deux sujets (psycho clinique ou neuropsychologie)</li>
+      <li>Indiquer le nom de votre <strong>chargé·e de TD</strong> en haut de la copie</li>
+      <li>Maximum <strong>2 copies doubles</strong></li>
+      <li>Identifier les symptômes, le contexte → peut aider à choisir l'attitude et le type d'entretien</li>
+    </ul>
+  </div>
+
+  <h2 class="sh2">Plan type — 1re phase d'entretien</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--mint);">1️⃣</div><span class="block-title">Ce qu'il faut systématiquement inclure</span></div>
+    <div class="step"><div class="step-num" style="background:var(--lav);color:var(--lav-d);">1</div><p><strong>Présentation :</strong> nom + fonction, expliquer le métier de psychologue, casser les stéréotypes. Authenticité.</p></div>
+    <div class="step"><div class="step-num" style="background:var(--mint);color:var(--mint-d);">2</div><p><strong>Institution :</strong> nom complet, type (hospitalier, CMP, libéral…), équipe, place du psy dans l'équipe.</p></div>
+    <div class="step"><div class="step-num" style="background:var(--butter);color:var(--butter-d);">3</div><p><strong>Loi :</strong> secret professionnel + ses limites (danger pour soi/autrui). Secret partagé en institution.</p></div>
+    <div class="step"><div class="step-num" style="background:var(--sky);color:var(--sky-d);">4</div><p><strong>Contexte :</strong> qui a orienté, pourquoi, quel type d'entretien (évaluation / investigation / thérapeutique), objectif.</p></div>
+    <div class="step"><div class="step-num" style="background:var(--peach);color:var(--peach-d);">5</div><p><strong>Déroulement :</strong> durée, fréquence, tarif.</p></div>
+    <div class="step"><div class="step-num" style="background:var(--sage);color:var(--sage-d);">6</div><p><strong>Ouverture :</strong> « Qu'est-ce qui vous amène aujourd'hui ? » / « Savez-vous pourquoi vous êtes là ? »</p></div>
+    <div class="warn" style="margin-top:0.5rem;"><p>⚠️ Ne jamais remercier le patient d'être venu. Ne pas commencer par un test sans l'expliquer.</p></div>
+  </div>
+
+  <h2 class="sh2">Plan type — Répondre sur les attitudes (Porter)</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--butter);">⚖️</div><span class="block-title">Structure de la réponse Porter</span></div>
+    <ol>
+      <li>Nommer l'<strong>attitude principale recommandée</strong> dans ce contexte et <strong>argumenter pourquoi</strong></li>
+      <li>Décrire son effet sur la relation thérapeutique</li>
+      <li>Donner un <strong>exemple de phrase concrète</strong> adaptée à ce patient</li>
+      <li>Nommer les <strong>attitudes à proscrire</strong> et expliquer pourquoi dans ce contexte précis</li>
+      <li>Mentionner les attitudes secondaires possibles avec leurs précautions</li>
+    </ol>
+    <div class="ok" style="margin-top:0.75rem;"><p>✅ La <strong>Compréhension</strong> est presque toujours l'attitude principale recommandée en début d'entretien.</p></div>
+  </div>
+
+  <h2 class="sh2">Plan type — Répondre sur les interventions (Blanchet)</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--mint);">🔬</div><span class="block-title">Structure de la réponse Blanchet</span></div>
+    <ol>
+      <li>Formuler l'<strong>intervention complète</strong> entre guillemets</li>
+      <li>Identifier le <strong>mode</strong> : Déclaratif (D) / Interrogatif (I) / Réitératif (R) → justifier</li>
+      <li>Identifier le <strong>niveau</strong> : Thématique (2) / Expressif (3-4) / Réflexif (5-6) → justifier</li>
+      <li>Expliquer <strong>ce que cette intervention permet</strong> (obtenir des faits ? approfondir ? accéder aux affects ?)</li>
+    </ol>
+    <div class="note" style="margin-top:0.75rem;"><p>💡 Exemple : <em>« Quel est votre ressenti vis-à-vis de cette situation ? »</em><br>→ Interrogatif car on pose une question. Réflexif niveau 6 car on questionne les affects/sentiments du patient. Cette intervention permet d'accéder à la dimension émotionnelle et de favoriser l'élaboration psychique.</p></div>
+  </div>
+
+  <h2 class="sh2">Plan type — Clôture de l'entretien</h2>
+  <div class="block">
+    <div class="block-hd"><div class="block-ico" style="background:var(--peach);">🔚</div><span class="block-title">Ce qu'il faut inclure</span></div>
+    <ol>
+      <li><strong>Résumer</strong> ce qui a été dit (reformulation synthétique)</li>
+      <li><strong>Réaccorder sur la demande :</strong> « Est-ce que j'ai bien compris ce qui vous amène ? »</li>
+      <li><strong>Organisation / proposition / orientation</strong> pour la suite (ou réorientation)</li>
+      <li>Laisser le patient poser des questions</li>
+      <li>Formuler des <strong>hypothèses cliniques</strong> et observations de fin</li>
+    </ol>
+    <div class="warn" style="margin-top:0.5rem;"><p>⚠️ Ne jamais remercier le patient « pour sa confiance ». Rappeler que la psychothérapie prend du temps. Signaler la fin : « On arrive vers la fin de l'entretien. »</p></div>
+  </div>
+
+  <h2 class="sh2">Bibliographie</h2>
+  <div class="block">
+    <ul>
+      <li>Douville, O. & Jacobi, B. (dir.) (2009). <em>10 entretiens en psychologie clinique de l'adulte.</em> Paris : Dunod.</li>
+      <li>Chouvier, B. & Attigui, P. (2016). <em>L'entretien clinique.</em> Malakoff : Armand Colin.</li>
+      <li>Chiland, C. (dir.) (1983/2013). <em>L'entretien clinique.</em> Paris : PUF.</li>
+    </ul>
+    <p style="margin-top:0.75rem; font-size:13px; color:var(--text3);">Vidéo : Georges Cognet sur la pratique de l'entretien → <a href="https://youtu.be/JDmcRSLoeDg" target="_blank" style="color:var(--lav-d);">youtu.be/JDmcRSLoeDg</a></p>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const map = {accueil:0,cours:1,entretiens:2,motifs:3,techniques:4,porter:5,blanchet:6,anamn:7,transfert:8,annales:9,methodo:10};
+  document.querySelectorAll('.nav-tab')[map[id]].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleCorr(btn) {
+  const c = btn.nextElementSibling;
+  if (c.classList.contains('vis')) {
+    c.classList.remove('vis');
+    btn.textContent = '💡 Voir les éléments de correction';
+  } else {
+    c.classList.add('vis');
+    btn.textContent = '🙈 Masquer la correction';
+  }
+}
+</script>
+</body>
+</html>
