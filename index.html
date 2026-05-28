@@ -601,35 +601,125 @@ h2.sh2 { font-size: 16px; font-weight: 600; color: var(--text); margin: 1.75rem 
         </ul>
       </div>
     </div>
-    <div class="bg">
-      <div class="bgc hd"></div>
-      <div class="bgc hd">Déclaratif (D)<br><span style="font-weight:400;font-style:italic;text-transform:none;font-size:10.5px;">Psy affirme / propose</span></div>
-      <div class="bgc hd">Interrogatif (I)<br><span style="font-weight:400;font-style:italic;text-transform:none;font-size:10.5px;">Psy questionne</span></div>
-      <div class="bgc hd">Réitératif (R)<br><span style="font-weight:400;font-style:italic;text-transform:none;font-size:10.5px;">Psy reformule / répète</span></div>
-      <div class="bgc hd">Niveau</div>
-      <div class="bgc rn">6</div>
-      <div class="bgc">Réfléchit une attitude ou sentiment <em style="color:var(--text3);">implicite</em></div>
-      <div class="bgc">Demande une réflexion sur son attitude ou ses sentiments</div>
-      <div class="bgc">Reformule une attitude ou sentiment <em style="color:var(--text3);">explicite</em></div>
-      <div class="bgc lbl lref" style="grid-row:span 2;">Réflexif</div>
-      <div class="bgc rn">5</div>
-      <div class="bgc">Réfléchit un contenu <em style="color:var(--text3);">implicite</em> (interprétation)</div>
-      <div class="bgc">Demande un approfondissement du contenu</div>
-      <div class="bgc">Reformule un contenu <em style="color:var(--text3);">explicite</em></div>
-      <div class="bgc rn">4</div>
-      <div class="bgc">Complémente</div>
-      <div class="bgc">Demande une explication</div>
-      <div class="bgc">Anticipe sur la suite du discours</div>
-      <div class="bgc lbl lexp" style="grid-row:span 2;">Expressif</div>
-      <div class="bgc rn">3</div>
-      <div class="bgc">Donne son point de vue sur la question</div>
-      <div class="bgc">Demande une précision</div>
-      <div class="bgc">Répète ce qui vient d'être dit</div>
-      <div class="bgc rn">2</div>
-      <div class="bgc">Prend position sur un thème nouveau</div>
-      <div class="bgc">Demande de développement d'un thème nouveau</div>
-      <div class="bgc">Relance sur un thème nouveau</div>
-      <div class="bgc lbl lthe">Thématique</div>
+    <div style="overflow-x:auto; margin-top:.75rem;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:560px;">
+      <thead>
+        <tr>
+          <th style="width:52px;background:var(--bg3);padding:10px;border:1px solid var(--border2);text-align:center;font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;">Niveau</th>
+          <th style="background:var(--lav);padding:10px;border:1px solid var(--border2);color:var(--lav-d);font-size:12px;">
+            <div style="font-weight:700;">Déclaratif (D)</div>
+            <div style="font-weight:400;font-size:11px;margin-top:2px;">Le psy prend l'initiative, affirme</div>
+          </th>
+          <th style="background:var(--mint);padding:10px;border:1px solid var(--border2);color:var(--mint-d);font-size:12px;">
+            <div style="font-weight:700;">Interrogatif (I)</div>
+            <div style="font-weight:400;font-size:11px;margin-top:2px;">Le psy questionne</div>
+          </th>
+          <th style="background:var(--butter);padding:10px;border:1px solid var(--border2);color:var(--butter-d);font-size:12px;">
+            <div style="font-weight:700;">Réitératif (R)</div>
+            <div style="font-weight:400;font-size:11px;margin-top:2px;">Le psy reformule / répète</div>
+          </th>
+          <th style="width:80px;background:var(--bg3);padding:10px;border:1px solid var(--border2);text-align:center;font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;">Catégorie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- RÉFLEXIF -->
+        <tr>
+          <td style="text-align:center;font-weight:700;font-size:15px;background:var(--lav-t);padding:10px;border:1px solid var(--border2);color:var(--lav-d);">6</td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            Réfléchit une <strong>attitude ou sentiment implicite</strong>
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Vous semblez ressentir une grande honte. »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            Demande une réflexion sur son <strong>attitude ou ses sentiments</strong>
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Quel est votre ressenti par rapport à votre père ? »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            Reformule une <strong>attitude ou sentiment explicite</strong>
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Vous en ressentez des remords — ça vous fait du mal. »</div>
+          </td>
+          <td rowspan="2" style="text-align:center;vertical-align:middle;background:var(--lav);border:1px solid var(--border2);padding:8px;color:var(--lav-d);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Réflexif<br><span style="font-size:10px;font-weight:400;">(affects, inconscient)</span></td>
+        </tr>
+        <tr>
+          <td style="text-align:center;font-weight:700;font-size:15px;background:var(--lav-t);padding:10px;border:1px solid var(--border2);color:var(--lav-d);">5</td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            Réfléchit un <strong>contenu implicite</strong> (interprétation)
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Peut-être idéalisez-vous trop ce qu'est un père. »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            Demande un <strong>approfondissement du contenu</strong>
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Qu'est-ce qu'un père juste représente pour vous ? »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            Reformule un <strong>contenu explicite</strong>
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Vous pensez qu'un père doit être chef de famille. »</div>
+          </td>
+        </tr>
+        <!-- EXPRESSIF -->
+        <tr>
+          <td style="text-align:center;font-weight:700;font-size:15px;background:var(--mint-t);padding:10px;border:1px solid var(--border2);color:var(--mint-d);">4</td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            <strong>Complémente</strong>
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Il est vrai que votre relation semble complexe. »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            Demande une <strong>explication</strong>
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Comment expliquez-vous cette haine ? »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            <strong>Anticipe</strong> sur la suite du discours
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Et je suppose que cette situation dure depuis longtemps ? »</div>
+          </td>
+          <td rowspan="2" style="text-align:center;vertical-align:middle;background:var(--mint);border:1px solid var(--border2);padding:8px;color:var(--mint-d);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Expressif<br><span style="font-size:10px;font-weight:400;">(détails, précisions)</span></td>
+        </tr>
+        <tr>
+          <td style="text-align:center;font-weight:700;font-size:15px;background:var(--mint-t);padding:10px;border:1px solid var(--border2);color:var(--mint-d);">3</td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            Donne son <strong>point de vue</strong> sur la question
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Je pense que cette situation vous met en difficulté. »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            Demande une <strong>précision</strong>
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Pouvez-vous me donner des exemples concrets ? »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            <strong>Répète</strong> ce qui vient d'être dit
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Votre père est pasteur, juste et bon, et vous le haïssez. »</div>
+          </td>
+        </tr>
+        <!-- THÉMATIQUE -->
+        <tr>
+          <td style="text-align:center;font-weight:700;font-size:15px;background:var(--butter-t);padding:10px;border:1px solid var(--border2);color:var(--butter-d);">2</td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            <strong>Prend position</strong> sur un thème nouveau
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Je vous propose qu'on parle de votre enfance. »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            Demande de <strong>développement d'un thème nouveau</strong>
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Comment se passait votre enfance ? »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            <strong>Relance</strong> sur un thème nouveau
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Parlons maintenant de votre relation avec votre mère. »</div>
+          </td>
+          <td rowspan="2" style="text-align:center;vertical-align:middle;background:var(--butter);border:1px solid var(--border2);padding:8px;color:var(--butter-d);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Thématique<br><span style="font-size:10px;font-weight:400;">(faits concrets)</span></td>
+        </tr>
+        <tr>
+          <td style="text-align:center;font-weight:700;font-size:15px;background:var(--butter-t);padding:10px;border:1px solid var(--border2);color:var(--butter-d);">1</td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            <strong>Accusé de réception</strong> — confirme avoir entendu
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Je vois. »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            <strong>Question écho</strong> — reprend un mot du patient
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Votre père ? »</div>
+          </td>
+          <td style="padding:10px;border:1px solid var(--border2);background:#fff;">
+            <strong>Continuateur</strong> — invite à poursuivre
+            <div style="margin-top:4px;font-size:11.5px;color:var(--text3);font-style:italic;">Ex : « Mmm… », « oui… »</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     </div>
     <h2 class="sh2">Tous les exemples (cas : jeune de 19 ans / père pasteur)</h2>
     <div class="block" style="background:var(--butter-t);border-color:rgba(196,138,10,0.2);">
